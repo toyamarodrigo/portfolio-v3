@@ -1,0 +1,17 @@
+{
+  "extensions.disabled": [
+    "ms-vscode.cpptools",
+    "ms-dotnettools.csharp",
+    "jchannon.csharpextensions",
+    "pivotal.vscode-manifest-yaml",
+    "formulahendry.code-runner",
+    "vscjava.vscode-java-pack",
+    "ms-toolsai.jupyter",
+    "vscjava.vscode-maven",
+    "junstyle.php-cs-fixer",
+    "felixfbecker.php-pack",
+    "bmewburn.vscode-intelephense-client",
+    "ms-python.python",
+    "theumletteam.umlet",
+  ],
+}
