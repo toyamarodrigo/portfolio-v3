@@ -1,35 +1,51 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import {
   Box,
   Text,
-  Flex,
   IconButton,
   useDisclosure,
   HStack,
   Stack,
+  Button,
+  Icon,
+  VStack,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, CloseIcon, SunIcon } from '@chakra-ui/icons';
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnMenuRef = useRef();
 
   const Links = ['Home', 'Projects', 'About', 'Contact'];
 
   return (
     <>
-      <Box
-        px={40}
-        marginTop={8}
-        position={'absolute'}
-        justifyContent={'center'}
-        w={'100%'}
+      <Stack
+        id="navbar"
+        className="navbar"
+        position="absolute"
+        justifyContent="center"
+        alignItems="center"
+        px={{ base: 20, sm: 20, lg: 20, xl: 80 }}
+        width="100%"
       >
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'} >
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          w="100%"
+        >
           <HStack>
             <Logo />
           </HStack>
-          <Flex alignItems={'center'}>
+          <Stack alignItems="center">
             <HStack
               as={'nav'}
               spacing={10}
@@ -40,36 +56,59 @@ export function Navbar() {
                   {link}
                 </Link>
               ))}
+              <Button borderRadius="50%" padding={0}>
+                <Icon as={SunIcon} />
+              </Button>
             </HStack>
-          </Flex>
+          </Stack>
           <IconButton
             size={'md'}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            icon={!isOpen && <HamburgerIcon h={8} w={8} />}
             aria-label={'Open Menu'}
             display={{ md: 'none' }}
-            onClick={isOpen ? onClose : onOpen}
+            ref={btnMenuRef}
+            onClick={onOpen}
+            backgroundColor="transparent"
+            color="white"
           />
-        </Flex>
-        {isOpen ? (
-          <Box pb={4} display={{ md: 'none' }}>
-            <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
-                <Link key={link} href={`#${link.toLowerCase()}`}>
-                  {link}
-                </Link>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
-      </Box>
+        </Stack>
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+          finalFocusRef={btnMenuRef}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton color="white" />
+            <DrawerHeader marginLeft={2}>Menu</DrawerHeader>
+            <DrawerBody>
+              <Stack spacing={6} marginLeft={4}>
+                <VStack spacing={6} alignItems="flex-start">
+                  {Links.map((link) => (
+                    <Link key={link} href={`#${link.toLowerCase()}`}>
+                      {link}
+                    </Link>
+                  ))}
+                </VStack>
+                <VStack alignItems="flex-start">
+                  <Button borderRadius="50%" padding={0}>
+                    <Icon as={SunIcon} />
+                  </Button>
+                </VStack>
+              </Stack>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+      </Stack>
     </>
   );
 }
 
 const Logo = () => {
   return (
-    <Box href="/" as="a">
+    <Stack href="/" as={'a'}>
       <Text className="logo">rt.codes</Text>
-    </Box>
+    </Stack>
   );
 };

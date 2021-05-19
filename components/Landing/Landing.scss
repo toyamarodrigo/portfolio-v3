@@ -1,0 +1,37 @@
+#home {
+  background-color: $background-dark;
+}
+
+.landing {
+  &__eclipse {
+    background: rgba(110, 132, 189, 0.3);
+  }
+
+  &__eclipse2 {
+    background: #E9FBFE;
+    box-shadow: inset 35px -21px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+  &__container-text {
+    &__titles {
+      h1 {
+        font-size: 4.768rem;
+        font-family: $font-poppins;
+        font-weight: bold;
+        color: $font-light;
+        margin-bottom: 10px;
+      }
+      h4 {
+        color: $font-light;
+        font-family: $font-poppins;
+        font-weight: thin;
+      }
+    }
+  }
+
+  &__container-logo {
+    background: $logo-background;
+    box-shadow: 3px 5px 4px rgba(0, 0, 0, 0.25);
+  }
+}

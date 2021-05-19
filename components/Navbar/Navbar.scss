@@ -4,6 +4,15 @@
   font-weight: 300;
 }
 
+.navbar {
+  height: 10vh;
+  z-index: 1;
+}
+
+.chakra-modal__content {
+  background-color: rgb(28, 33, 48) !important;
+}
+
 .logo {
   font-weight: 400;
 }
