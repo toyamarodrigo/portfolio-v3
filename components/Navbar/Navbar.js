@@ -31,7 +31,7 @@ export function Navbar() {
         position="absolute"
         justifyContent="center"
         alignItems="center"
-        px={{ base: 20, sm: 20, lg: 20, xl: 80 }}
+        px={{ base: 10, sm: 20, lg: 20, xl: 80 }}
         width="100%"
       >
         <Stack

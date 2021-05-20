@@ -40,24 +40,35 @@ export function Landing() {
         height="2223px"
         borderRadius="50%"
       />
-      <Stack className="landing__container-text" width="356px" height="auto">
-        <Stack className="landing__container-text__titles" marginBottom="26px">
+      <Stack
+        className="landing__container-text"
+        width="356px"
+        height="auto"
+        justifyContent="center"
+      >
+        <Stack
+          className="landing__container-text__titles"
+          marginBottom="26px"
+          w={'100%'}
+          marginX={'20px'}
+        >
           <Text
             as={'h1'}
-            fontSize={{ base: '3.5rem', sm: '3.5rem', lg: '4.768rem' }}
+            fontSize={{ base: '4.2rem', sm: '4.2rem', lg: '4.768rem' }}
           >
             Rodrigo Toyama.
           </Text>
-          <Text as={'h4'} fontSize={{ base: '1.2rem', sm: '1.6rem' }}>
+          <Text as={'h4'} fontSize={{ base: '1.4rem', sm: '1.6rem' }}>
             Front-end Developer
           </Text>
         </Stack>
         <Stack
           direction="row"
-          justifyContent="space-between"
+          justifyContent="center"
           className="landing__container-text__socials"
-          w="80"
+          w={{ base: '100', lg: '80' }}
           color="white"
+          spacing={10}
         >
           {Socials.map((social, index) => (
             <Link key={index} href={social.url}>
