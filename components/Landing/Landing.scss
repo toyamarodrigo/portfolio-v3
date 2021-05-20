@@ -4,19 +4,17 @@
 
 .landing {
   &__eclipse {
-    background: rgba(110, 132, 189, 0.3);
+    background: rgba(133, 162, 235, 0.3);
   }
 
   &__eclipse2 {
-    background: #E9FBFE;
+    background: #e9fbfe;
     box-shadow: inset 35px -21px 4px rgba(0, 0, 0, 0.25);
   }
-
 
   &__container-text {
     &__titles {
       h1 {
-        font-size: 4.768rem;
         font-family: $font-poppins;
         font-weight: bold;
         color: $font-light;
@@ -25,9 +23,83 @@
       h4 {
         color: $font-light;
         font-family: $font-poppins;
-        font-weight: thin;
+        font-weight: 200;
       }
     }
+    &__socials {
+      &__item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 20%;
+        font-size: 2rem;
+        outline: 0 solid;
+        text-decoration: none !important;
+        box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-out;
+        svg:hover {
+          color: white;
+        }
+
+        &:hover,
+        &:focus {
+          background-color: currentColor !important;
+          outline: 0 solid;
+          transform: scale(1.12);
+          box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.4);
+        }
+        &:hover::before,
+        &:focus::before {
+          opacity: 1;
+          transform: translate(-50%, -70%) scale(1);
+        }
+
+        &::before {
+          content: attr(aria-label);
+          position: absolute;
+          left: 50%;
+          bottom: -100%;
+          font-size: 0.8rem;
+          white-space: nowrap;
+          color: white;
+          background-color: #3b2d4a;
+          padding: 0em 0.7em;
+          margin: 0 0 0.8em 0;
+          box-shadow: 0 0.5em 0.5em rgba(0, 0, 0, 0.4);
+          opacity: 0;
+          transform: translate(-50%, -180%) scale(0.7);
+          border-radius: 2em;
+          transition: 0.3s;
+
+          pointer-events: none;
+          cursor: default;
+        }
+
+        .svg-icon {
+          padding: 10px;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .file,
+  .github {
+    color: #000 !important;
+  }
+
+  .linkedin:active {
+    color: white;
+  }
+
+  .linkedin,
+  .mail {
+    color: #007bb5 !important;
   }
 
   &__container-logo {

@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import {
-  Box,
-  Text,
   IconButton,
   useDisclosure,
   HStack,
@@ -17,7 +15,7 @@ import {
   DrawerHeader,
   DrawerBody,
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, SunIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, SunIcon } from '@chakra-ui/icons';
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,9 +48,10 @@ export function Navbar() {
               as={'nav'}
               spacing={10}
               display={{ base: 'none', md: 'flex' }}
+              className="nav-links"
             >
-              {Links.map((link) => (
-                <Link key={link} href={`#${link.toLowerCase()}`}>
+              {Links.map((link, index) => (
+                <Link key={index} href={`#${link.toLowerCase()}`}>
                   {link}
                 </Link>
               ))}
@@ -107,8 +106,10 @@ export function Navbar() {
 
 const Logo = () => {
   return (
-    <Stack href="/" as={'a'}>
-      <Text className="logo">rt.codes</Text>
+    <Stack>
+      <Link href="/" className="logo">
+        rt.codes
+      </Link>
     </Stack>
   );
 };

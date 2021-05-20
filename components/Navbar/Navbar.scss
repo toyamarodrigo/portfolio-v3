@@ -4,6 +4,26 @@
   font-weight: 300;
 }
 
+.nav-links a {
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 1px;
+    left: 50%;
+    bottom: 0;
+    background-color: rgb(251, 251, 252);
+    transition: all ease-in-out 0.3s;
+  }
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
 .navbar {
   height: 10vh;
   z-index: 1;

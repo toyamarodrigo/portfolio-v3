@@ -1,6 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import { Box, Stack } from '@chakra-ui/layout';
+import Link from 'next/link';
+import { Box, Icon, Stack, Text } from '@chakra-ui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileAlt, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { Socials } from './constants';
 
 export function Landing() {
   return (
@@ -22,7 +27,12 @@ export function Landing() {
     >
       <Box
         className="landing__eclipse"
-        display={{ base: 'none', sm: 'none', md: 'none', lg: 'block' }}
+        display={{
+          base: 'none',
+          sm: 'none',
+          md: 'none',
+          lg: 'block',
+        }}
         position="absolute"
         top="-60%"
         left="52%"
@@ -32,20 +42,48 @@ export function Landing() {
       />
       <Stack className="landing__container-text" width="356px" height="auto">
         <Stack className="landing__container-text__titles" marginBottom="26px">
-          <h1>Rodrigo Toyama.</h1>
-          <h4>Front-end Developer</h4>
+          <Text
+            as={'h1'}
+            fontSize={{ base: '3.5rem', sm: '3.5rem', lg: '4.768rem' }}
+          >
+            Rodrigo Toyama.
+          </Text>
+          <Text as={'h4'} fontSize={{ base: '1.2rem', sm: '1.6rem' }}>
+            Front-end Developer
+          </Text>
         </Stack>
         <Stack
           direction="row"
-          justifyContent="space-around"
+          justifyContent="space-between"
           className="landing__container-text__socials"
-          width="100"
+          w="80"
           color="white"
         >
-          <h3>CV</h3>
-          <h3>LINKEDIN</h3>
-          <h3>GITHUB</h3>
-          <h3>MAIL</h3>
+          {Socials.map((social, index) => (
+            <Link key={index} href={social.url}>
+              <a
+                target="_blank"
+                className={`landing__container-text__socials__item ${social.name}`}
+                rel="noopener noreferrer"
+              >
+                <Icon
+                  as={FontAwesomeIcon}
+                  icon={
+                    social.name === 'file'
+                      ? faFileAlt
+                      : social.name === 'linkedin'
+                      ? faLinkedinIn
+                      : social.name === 'github'
+                      ? faGithub
+                      : social.name === 'mail'
+                      ? faEnvelopeSquare
+                      : ''
+                  }
+                  className="svg-icon"
+                />
+              </a>
+            </Link>
+          ))}
         </Stack>
       </Stack>
       <Stack
