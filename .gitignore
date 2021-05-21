@@ -6,7 +6,11 @@
 .pnp.js
 bower_components
 /.vscode/
-
+client/node_modules
+client/.next
+server/node_modules
+cliente/package-lock.json
+server/package-lock.json
 
 # testing
 /coverage
@@ -58,3 +62,5 @@ yarn-error.log*
 
 # sanity
 sanity.json
+client/package-lock.json
+package-lock.json

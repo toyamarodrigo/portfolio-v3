@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "project": {
+    "name": "server"
+  },
+  "api": {
+    "projectId": "ID_PROJECTO",
+    "dataset": "DATASET_PROJECTO"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/vision"
+      ]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}
