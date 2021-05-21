@@ -2,7 +2,7 @@ import { Stack, Text } from '@chakra-ui/layout';
 import React from 'react';
 import ProjectsList from './ProjectsList/ProjectsList';
 
-export function Projects() {
+export function Projects({ posts }) {
   return (
     <Stack
       id="projects"
@@ -23,8 +23,8 @@ export function Projects() {
           Projects.
         </Text>
       </Stack>
-      <Stack justifyContent="center" alignItems="center" w={930}>
-        <ProjectsList />
+      <Stack justifyContent="center" alignItems="center" w={930} spacing={16}>
+        <ProjectsList posts={posts} />
       </Stack>
     </Stack>
   );

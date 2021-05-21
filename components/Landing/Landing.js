@@ -66,7 +66,7 @@ export function Landing() {
           direction="row"
           justifyContent="center"
           className="landing__container-text__socials"
-          w={{ base: '100', lg: '80' }}
+          w={{ base: '100', md: '100', lg: '100' }}
           color="white"
           spacing={10}
         >
