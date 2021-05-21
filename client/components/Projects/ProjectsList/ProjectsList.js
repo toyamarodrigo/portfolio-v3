@@ -79,18 +79,19 @@ export default function ProjectsList({ posts }) {
               <Stack justifyContent="center" marginLeft={4} spacing={4}>
                 <Text as={'h3'}>{post.title}</Text>
                 <Text as={'h5'}>Tech used</Text>
-                <HStack justifyContent="flex-start" flexWrap="wrap">
+                <Stack direction="row" noOfLines={2}>
                   {post.techUsed.map((tech, index) => (
                     <Badge
                       key={index}
                       colorScheme="pink"
                       paddingX={{ base: 1, sm: 2, md: 4, lg: 4 }}
-                      marginY={2}
+                      justifySelf="center"
+                      textAlign="center"
                     >
                       {tech}
                     </Badge>
                   ))}
-                </HStack>
+                </Stack>
                 <VStack>
                   {post.body.map((text) =>
                     text.children.map((textChildren) =>
