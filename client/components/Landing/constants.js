@@ -1,7 +1,7 @@
 export const Socials = [
   {
     name: 'file',
-    url: 'https://drive.google.com/',
+    url: 'https://drive.google.com/file/d/1qvj-0QEZ-wl78jVqgvwL5bEBV66p5rAr/view?usp=sharing',
   },
   {
     name: 'linkedin',
