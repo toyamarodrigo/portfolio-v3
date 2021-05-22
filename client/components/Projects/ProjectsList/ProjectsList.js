@@ -5,7 +5,6 @@ import {
   Image,
   Text,
   Badge,
-  HStack,
   VStack,
   Icon,
   Button,
