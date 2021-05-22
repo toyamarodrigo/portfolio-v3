@@ -32,7 +32,7 @@ export function Projects({ posts }) {
       <Stack justifyContent="center" alignItems="center" w={930} spacing={20}>
         <ProjectsList posts={posts} isShowing={isShowing} />
         <Button colorScheme={'red'} paddingX={10} onClick={handleShowProject}>
-          Show More
+          {!isShowing ? 'Show more' : 'Show less'}
         </Button>
       </Stack>
     </Stack>
