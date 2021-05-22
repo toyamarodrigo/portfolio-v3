@@ -76,6 +76,7 @@ export function Landing() {
                 target="_blank"
                 className={`landing__container-text__socials__item ${social.name}`}
                 rel="noopener noreferrer"
+                aria-label={social.ariaLabel}
               >
                 <Icon
                   as={FontAwesomeIcon}
