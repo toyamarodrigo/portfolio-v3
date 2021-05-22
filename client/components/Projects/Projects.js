@@ -5,9 +5,7 @@ import ProjectsList from './ProjectsList/ProjectsList';
 export function Projects({ posts }) {
   const [isShowing, setIsShowing] = useState(false);
 
-  function handleShowProject() {
-    setIsShowing(!isShowing);
-  }
+  const handleShowProject = () => setIsShowing(!isShowing);
 
   return (
     <Stack
