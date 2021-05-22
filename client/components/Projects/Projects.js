@@ -1,8 +1,14 @@
-import { Stack, Text } from '@chakra-ui/layout';
-import React from 'react';
+import { Stack, Text, Button } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import ProjectsList from './ProjectsList/ProjectsList';
 
 export function Projects({ posts }) {
+  const [isShowing, setIsShowing] = useState(false);
+
+  function handleShowProject() {
+    setIsShowing(!isShowing);
+  }
+
   return (
     <Stack
       id="projects"
@@ -24,7 +30,10 @@ export function Projects({ posts }) {
         </Text>
       </Stack>
       <Stack justifyContent="center" alignItems="center" w={930} spacing={20}>
-        <ProjectsList posts={posts} />
+        <ProjectsList posts={posts} isShowing={isShowing} />
+        <Button colorScheme={'red'} paddingX={10} onClick={handleShowProject}>
+          Show More
+        </Button>
       </Stack>
     </Stack>
   );
