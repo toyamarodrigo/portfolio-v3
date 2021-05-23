@@ -12,6 +12,4 @@ Updating my web portfolio to v3, this time I'm trying to implement [NextJS]([www
 * more SCSS stuff.
 * deploy to Vercel
   
-## Difficulties
-
 ## Screenshots
