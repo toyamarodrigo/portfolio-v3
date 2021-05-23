@@ -28,12 +28,21 @@
     &__first-text,
     &__second-text {
       font-family: $font-poppins;
-      font-weight: 700;
-      line-height: 26px;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.3em;
       color: white;
     }
     &__second-text {
-      // margin-left: 36px !important;
+      .chakra-link {
+        color: palevioletred !important;
+        font-weight: 700 !important;
+      }
     }
+  }
+
+  &__button {
+    margin-top: 5em !important;
+    margin-bottom: 5em !important;
   }
 }
