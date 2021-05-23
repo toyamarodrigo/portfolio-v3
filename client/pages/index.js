@@ -8,6 +8,7 @@ export default function Home({ posts }) {
       <Navbar />
       <Landing />
       <Projects posts={posts} />
+      <About />
     </Stack>
   );
 }

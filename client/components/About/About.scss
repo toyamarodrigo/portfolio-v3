@@ -1,0 +1,39 @@
+.about {
+  &__eclipse {
+    background: rgba(12, 30, 78, 0.3);
+  }
+
+  &__title {
+    h1 {
+      font-family: $font-poppins;
+      font-weight: bold;
+      color: rgba(251, 251, 252, 0.2);
+    }
+    &__presentation {
+      font-family: $font-poppins;
+      font-weight: normal;
+      font-size: 20px;
+      color: white;
+    }
+  }
+
+  &__goal {
+    margin-top: 6em !important;
+    &__title {
+      font-family: $font-poppins;
+      font-weight: bold;
+      color: rgba(251, 251, 252, 0.15);
+      transform: rotate(-90deg);
+    }
+    &__first-text,
+    &__second-text {
+      font-family: $font-poppins;
+      font-weight: 700;
+      line-height: 26px;
+      color: white;
+    }
+    &__second-text {
+      // margin-left: 36px !important;
+    }
+  }
+}
