@@ -20,12 +20,7 @@ export function Projects({ posts }) {
         className="projects__title"
         marginBottom={100}
       >
-        <Text
-          as={'h1'}
-          fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
-        >
-          Projects.
-        </Text>
+        <Title>Projects.</Title>
       </Stack>
       <Stack justifyContent="center" alignItems="center" w={930} spacing={20}>
         <ProjectsList posts={posts} isShowing={isShowing} />
@@ -36,3 +31,14 @@ export function Projects({ posts }) {
     </Stack>
   );
 }
+
+const Title = ({ children }) => {
+  return (
+    <Text
+      as={'h1'}
+      fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
+    >
+      {children}
+    </Text>
+  );
+};

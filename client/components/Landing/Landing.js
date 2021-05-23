@@ -25,21 +25,7 @@ export function Landing() {
       id="home"
       className="landing"
     >
-      <Box
-        className="landing__eclipse"
-        display={{
-          base: 'none',
-          sm: 'none',
-          md: 'none',
-          lg: 'block',
-        }}
-        position="absolute"
-        top="-60%"
-        left="52%"
-        width="2223px"
-        height="2223px"
-        borderRadius="50%"
-      />
+      <EclipseOne />
       <Stack
         className="landing__container-text"
         width="356px"
@@ -52,15 +38,8 @@ export function Landing() {
           w={'100%'}
           marginX={'20px'}
         >
-          <Text
-            as={'h1'}
-            fontSize={{ base: '4.2rem', sm: '4.2rem', lg: '4.768rem' }}
-          >
-            Rodrigo Toyama.
-          </Text>
-          <Text as={'h4'} fontSize={{ base: '1.4rem', sm: '1.6rem' }}>
-            Front-end Developer
-          </Text>
+          <Title>Rodrigo Toyama.</Title>
+          <Subtitle>Full-stack Developer</Subtitle>
         </Stack>
         <Stack
           direction="row"
@@ -98,26 +77,74 @@ export function Landing() {
           ))}
         </Stack>
       </Stack>
-      <Stack
-        display={{ base: 'none', sm: 'none', md: 'none', lg: 'flex' }}
-        justifyContent="center"
-        alignItems="center"
-        className="landing__container-logo"
-        borderRadius="50%"
-        height={{ lg: '350px', xl: '420px' }}
-        width={{ lg: '350px', xl: '420px' }}
-      >
-        <Image src="/logo.png" alt="logo" width="250" height="250" />
-      </Stack>
-      <Box
-        className="landing__eclipse2"
-        position="absolute"
-        width="194px"
-        height="194px"
-        top="90%"
-        right="92%"
-        borderRadius="50%"
-      />
+      <Logo />
+      <EclipseTwo />
     </Stack>
   );
 }
+
+const Logo = () => {
+  return (
+    <Stack
+      display={{ base: 'none', sm: 'none', md: 'none', lg: 'flex' }}
+      justifyContent="center"
+      alignItems="center"
+      className="landing__container-logo"
+      borderRadius="50%"
+      height={{ lg: '350px', xl: '420px' }}
+      width={{ lg: '350px', xl: '420px' }}
+    >
+      <Image src="/logo.png" alt="logo" width="250" height="250" />
+    </Stack>
+  );
+};
+
+const Title = ({ children }) => {
+  return (
+    <Text as={'h1'} fontSize={{ base: '4.2rem', sm: '4.2rem', lg: '4.768rem' }}>
+      {children}
+    </Text>
+  );
+};
+
+const Subtitle = ({ children }) => {
+  return (
+    <Text as={'h4'} fontSize={{ base: '1.4rem', sm: '1.6rem' }}>
+      {children}
+    </Text>
+  );
+};
+
+const EclipseOne = () => {
+  return (
+    <Box
+      className="landing__eclipse"
+      display={{
+        base: 'none',
+        sm: 'none',
+        md: 'none',
+        lg: 'block',
+      }}
+      position="absolute"
+      top="-60%"
+      left="52%"
+      width="2223px"
+      height="2223px"
+      borderRadius="50%"
+    />
+  );
+};
+
+const EclipseTwo = () => {
+  return (
+    <Box
+      className="landing__eclipse2"
+      position="absolute"
+      width="194px"
+      height="194px"
+      top="90%"
+      right="92%"
+      borderRadius="50%"
+    />
+  );
+};

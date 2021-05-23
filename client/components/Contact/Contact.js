@@ -12,21 +12,7 @@ export function Contact() {
       h={'100vh'}
       overflow="hidden"
     >
-      <Box
-        className="contact__eclipse"
-        display={{
-          base: 'block',
-          sm: 'block',
-          md: 'block',
-          lg: 'block',
-        }}
-        position="absolute"
-        top={0}
-        width="194px"
-        height="194px"
-        borderRadius="50%"
-        zIndex={-1}
-      />
+      <EclipseOne />
       <Stack
         position="relative"
         justifyContent="center"
@@ -34,18 +20,7 @@ export function Contact() {
         className="contact__title"
         marginBottom={100}
       >
-        <VStack
-          position="absolute"
-          bottom={{ base: '50%', sm: '45%', md: '30%', lg: '10%' }}
-        >
-          <Text
-            as={'h1'}
-            fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
-            marginBottom={8}
-          >
-            Contact
-          </Text>
-        </VStack>
+        <Title>Contact</Title>
         <VStack className="contact__title__subtitle" w={'100%'}>
           <Text
             fontSize={{
@@ -63,29 +38,78 @@ export function Contact() {
             to create game-changing experiences.
           </Text>
         </VStack>
-        <Stack>
-          <Link>
-            <Button colorScheme="teal" px={10}>
-              Let's Talk
-            </Button>
-          </Link>
-        </Stack>
+        <ButtonContact>Let's Talk</ButtonContact>
       </Stack>
-      <Box
-        className="contact__eclipse2"
-        display={{
-          base: 'block',
-          sm: 'block',
-          md: 'block',
-          lg: 'block',
-        }}
-        position="absolute"
-        top={'80%'}
-        width="2083px"
-        height="2083px"
-        borderRadius="50%"
-        zIndex={-1}
-      />
+      <EclipseTwo />
     </Stack>
   );
 }
+
+const Title = ({ children }) => {
+  return (
+    <VStack
+      position="absolute"
+      bottom={{ base: '50%', sm: '45%', md: '30%', lg: '10%' }}
+    >
+      <Text
+        as={'h1'}
+        fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
+        marginBottom={8}
+      >
+        {children}
+      </Text>
+    </VStack>
+  );
+};
+
+const ButtonContact = ({ children }) => {
+  return (
+    <Stack>
+      <Link href="/#form">
+        <Button colorScheme="teal" px={10}>
+          {children}
+        </Button>
+      </Link>
+    </Stack>
+  );
+};
+
+const EclipseOne = () => {
+  return (
+    <Box
+      className="contact__eclipse"
+      display={{
+        base: 'block',
+        sm: 'block',
+        md: 'block',
+        lg: 'block',
+      }}
+      position="absolute"
+      top={0}
+      width="194px"
+      height="194px"
+      borderRadius="50%"
+      zIndex={-1}
+    />
+  );
+};
+
+const EclipseTwo = () => {
+  return (
+    <Box
+      className="contact__eclipse2"
+      display={{
+        base: 'block',
+        sm: 'block',
+        md: 'block',
+        lg: 'block',
+      }}
+      position="absolute"
+      top={'80%'}
+      width="2083px"
+      height="2083px"
+      borderRadius="50%"
+      zIndex={-1}
+    />
+  );
+};
