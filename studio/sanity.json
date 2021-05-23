@@ -1,0 +1,29 @@
+{
+  "root": true,
+  "project": {
+    "name": "studio",
+    "basePath": "/studio"
+  },
+  "api": {
+    "projectId": "NEXT_PUBLIC_PROJECT_ID",
+    "dataset": "NEXT_PUBLIC_PROJECT_DATASET"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/components",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    }
+  ]
+}

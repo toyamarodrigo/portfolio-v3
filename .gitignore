@@ -10,7 +10,6 @@ studio/dist
 public/studio
 
 # sanity
-sanity.json
 package-lock.json
 
 # vercel
