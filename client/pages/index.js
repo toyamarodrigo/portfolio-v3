@@ -9,6 +9,7 @@ export default function Home({ posts }) {
       <Landing />
       <Projects posts={posts} />
       <About />
+      <Contact />
     </Stack>
   );
 }
