@@ -40,9 +40,7 @@ export function Navbar() {
           justifyContent="space-between"
           w="100%"
         >
-          <HStack>
-            <Logo />
-          </HStack>
+          <Logo>rt.codes</Logo>
           <Stack alignItems="center">
             <HStack
               as={'nav'}
@@ -104,12 +102,14 @@ export function Navbar() {
   );
 }
 
-const Logo = () => {
+const Logo = ({ children }) => {
   return (
-    <Stack>
-      <Link href="/" className="logo">
-        rt.codes
-      </Link>
-    </Stack>
+    <HStack>
+      <Stack>
+        <Link href="/" className="logo">
+          {children}
+        </Link>
+      </Stack>
+    </HStack>
   );
 };

@@ -1,6 +1,13 @@
 .about {
+  padding-bottom: 10em !important;
+
   &__eclipse {
     background: rgba(12, 30, 78, 0.3);
+  }
+
+  &__eclipse2 {
+    background: #ffe0c4;
+    box-shadow: inset 0px 22px 0px 2px rgba(0, 0, 0, 0.25);
   }
 
   &__title {
@@ -43,6 +50,6 @@
 
   &__button {
     margin-top: 5em !important;
-    margin-bottom: 10em !important;
+    margin-bottom: 12em !important;
   }
 }

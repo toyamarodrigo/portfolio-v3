@@ -45,6 +45,8 @@ export function About() {
       </Grid>
 
       <ButtonViewProject>View Projects</ButtonViewProject>
+
+      <EclipseTwo />
     </Stack>
   );
 }
@@ -223,6 +225,26 @@ const EclipseOne = () => {
       right="30%"
       width="2450px"
       height="2450px"
+      borderRadius="50%"
+      zIndex={-1}
+    />
+  );
+};
+
+const EclipseTwo = () => {
+  return (
+    <Box
+      className="about__eclipse2"
+      display={{
+        base: 'block',
+        sm: 'block',
+        md: 'block',
+        lg: 'block',
+      }}
+      position="absolute"
+      bottom={-30}
+      width="194px"
+      height="194px"
       borderRadius="50%"
       zIndex={-1}
     />

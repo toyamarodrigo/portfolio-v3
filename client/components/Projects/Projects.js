@@ -1,5 +1,5 @@
-import { Stack, Text, Button } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { Stack, Text, Button, Box } from '@chakra-ui/react';
 import ProjectsList from './ProjectsList/ProjectsList';
 
 export function Projects({ posts }) {
@@ -13,6 +13,7 @@ export function Projects({ posts }) {
       className="projects"
       justifyContent="center"
       alignItems="center"
+      overflow="hidden"
     >
       <Stack
         justifyContent="center"

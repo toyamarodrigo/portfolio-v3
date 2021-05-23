@@ -1,5 +1,12 @@
 import React from 'react';
-import { Stack, Box, VStack, Text, Button, Link } from '@chakra-ui/react';
+import { Stack, Box, VStack, Text, Button, Link, Icon } from '@chakra-ui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faInstagram,
+  faGithub,
+  faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons';
+import { Socials } from './constants';
 
 export function Contact() {
   return (
@@ -12,13 +19,12 @@ export function Contact() {
       h={'100vh'}
       overflow="hidden"
     >
-      <EclipseOne />
       <Stack
         position="relative"
         justifyContent="center"
         alignItems="center"
         className="contact__title"
-        marginBottom={100}
+        marginBottom={50}
       >
         <Title>Contact</Title>
         <VStack className="contact__title__subtitle" w={'100%'}>
@@ -39,6 +45,32 @@ export function Contact() {
           </Text>
         </VStack>
         <ButtonContact>Let's Talk</ButtonContact>
+      </Stack>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        className="contact__socials"
+        spacing={20}
+      >
+        {Socials.map((social, index) => (
+          <Link key={index} href={social.url}>
+            <a target="_blank" rel="noopener noreferrer">
+              <Icon
+                as={FontAwesomeIcon}
+                size="lg"
+                icon={
+                  social.name === 'ig'
+                    ? faInstagram
+                    : social.name === 'linkedin'
+                    ? faLinkedinIn
+                    : social.name === 'github'
+                    ? faGithub
+                    : ''
+                }
+              />
+            </a>
+          </Link>
+        ))}
       </Stack>
       <EclipseTwo />
     </Stack>
@@ -71,26 +103,6 @@ const ButtonContact = ({ children }) => {
         </Button>
       </Link>
     </Stack>
-  );
-};
-
-const EclipseOne = () => {
-  return (
-    <Box
-      className="contact__eclipse"
-      display={{
-        base: 'block',
-        sm: 'block',
-        md: 'block',
-        lg: 'block',
-      }}
-      position="absolute"
-      top={0}
-      width="194px"
-      height="194px"
-      borderRadius="50%"
-      zIndex={-1}
-    />
   );
 };
 
