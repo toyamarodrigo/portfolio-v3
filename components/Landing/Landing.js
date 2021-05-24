@@ -134,7 +134,7 @@ const Logo = () => {
       width={{ lg: '350px', xl: '420px' }}
       initial={{ opacity: 0 }}
       animate={{ scale: [0, 1.4, 0.9, 1], opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8, delay: 1 }}
       zIndex={1}
     >
       <Image src="/logo.png" alt="logo" width="250" height="250" />

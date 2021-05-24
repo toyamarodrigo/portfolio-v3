@@ -9,6 +9,7 @@ Updating my web portfolio to v3, this time I'm trying to implement [NextJS]([www
 * [NextJS]([www.nextjs.com](https://nextjs.org/))
 * [ChakraUI](https://chakra-ui.com/)
 * [Sanity.io](https://www.sanity.io/)
+* Framer Motion
 * more SCSS stuff.
 * deploy to Vercel
   
