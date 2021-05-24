@@ -1,11 +1,41 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, Icon, Stack, Text } from '@chakra-ui/react';
+import { Box, Icon, Stack, Text, List, ListItem } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileAlt, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { Socials } from './constants';
+import { motion } from 'framer-motion';
+
+const MotionBox = motion(Box);
+const MotionStack = motion(Stack);
+const MotionList = motion(List);
+const MotionListItem = motion(ListItem);
+
+const variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: {
+    opacity: 0,
+    x: -50,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+    },
+  },
+};
 
 export function Landing() {
   return (
@@ -32,50 +62,59 @@ export function Landing() {
         height="auto"
         justifyContent="center"
       >
-        <Stack
+        <MotionStack
           className="landing__container-text__titles"
           marginBottom="26px"
           w={'100%'}
           marginX={'20px'}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
         >
           <Title>Rodrigo Toyama.</Title>
           <Subtitle>Full-stack Developer</Subtitle>
-        </Stack>
-        <Stack
+        </MotionStack>
+        <MotionList
+          display="flex"
           direction="row"
-          justifyContent="center"
+          justifyContent="space-around"
+          alignItems="center"
           className="landing__container-text__socials"
           w={{ base: '100', md: '100', lg: '100' }}
           color="white"
-          spacing={10}
+          initial="hidden"
+          animate="show"
+          variants={variants}
         >
           {Socials.map((social, index) => (
-            <Link key={index} href={social.url}>
-              <a
-                target="_blank"
-                className={`landing__container-text__socials__item ${social.name}`}
-                rel="noopener noreferrer"
-                aria-label={social.ariaLabel}
-              >
-                <Icon
-                  as={FontAwesomeIcon}
-                  icon={
-                    social.name === 'file'
-                      ? faFileAlt
-                      : social.name === 'linkedin'
-                      ? faLinkedinIn
-                      : social.name === 'github'
-                      ? faGithub
-                      : social.name === 'mail'
-                      ? faEnvelopeSquare
-                      : ''
-                  }
-                  className="svg-icon"
-                />
-              </a>
-            </Link>
+            <MotionListItem key={index} variants={item}>
+              <Link href={social.url}>
+                <a
+                  target="_blank"
+                  className={`landing__container-text__socials__item ${social.name}`}
+                  rel="noopener noreferrer"
+                  aria-label={social.ariaLabel}
+                >
+                  <Icon
+                    as={FontAwesomeIcon}
+                    icon={
+                      social.name === 'file'
+                        ? faFileAlt
+                        : social.name === 'linkedin'
+                        ? faLinkedinIn
+                        : social.name === 'github'
+                        ? faGithub
+                        : social.name === 'mail'
+                        ? faEnvelopeSquare
+                        : ''
+                    }
+                    className="svg-icon"
+                  />
+                </a>
+              </Link>
+            </MotionListItem>
           ))}
-        </Stack>
+        </MotionList>
       </Stack>
       <Logo />
       <EclipseTwo />
@@ -85,7 +124,7 @@ export function Landing() {
 
 const Logo = () => {
   return (
-    <Stack
+    <MotionStack
       display={{ base: 'none', sm: 'none', md: 'none', lg: 'flex' }}
       justifyContent="center"
       alignItems="center"
@@ -93,9 +132,13 @@ const Logo = () => {
       borderRadius="50%"
       height={{ lg: '350px', xl: '420px' }}
       width={{ lg: '350px', xl: '420px' }}
+      initial={{ opacity: 0 }}
+      animate={{ scale: [0, 1.4, 0.9, 1], opacity: 1 }}
+      transition={{ duration: 1 }}
+      zIndex={1}
     >
       <Image src="/logo.png" alt="logo" width="250" height="250" />
-    </Stack>
+    </MotionStack>
   );
 };
 
@@ -117,7 +160,7 @@ const Subtitle = ({ children }) => {
 
 const EclipseOne = () => {
   return (
-    <Box
+    <MotionBox
       className="landing__eclipse"
       display={{
         base: 'none',
@@ -131,13 +174,16 @@ const EclipseOne = () => {
       width="2223px"
       height="2223px"
       borderRadius="50%"
+      initial={{ opacity: 0 }}
+      animate={{ scale: 1, x: [800, 0], y: [400, 0], opacity: 1 }}
+      transition={{ duration: 0.8 }}
     />
   );
 };
 
 const EclipseTwo = () => {
   return (
-    <Box
+    <MotionBox
       className="landing__eclipse2"
       position="absolute"
       width="194px"
@@ -145,6 +191,15 @@ const EclipseTwo = () => {
       top="90%"
       right="92%"
       borderRadius="50%"
+      initial={{ opacity: 0 }}
+      animate={{
+        scale: [0.7, 1],
+        x: [-200, 0],
+        opacity: 1,
+      }}
+      transition={{
+        duration: 1,
+      }}
     />
   );
 };

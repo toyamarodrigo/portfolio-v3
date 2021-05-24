@@ -2,7 +2,7 @@ export const Socials = [
   {
     name: 'ig',
     url: 'https://www.instagram.com/rt.codes/',
-    ariaLabel: 'CV',
+    ariaLabel: 'Instagram',
   },
   {
     name: 'linkedin',

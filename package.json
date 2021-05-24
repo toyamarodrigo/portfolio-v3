@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next --port $PORT\" \"cd studio && sanity start\"",
+    "dev": "concurrently \"next --port $PORT\" \"cd studio && sudo sanity start\"",
     "build": "echo 'Building Sanity to public/studio' && cd studio && yarn install && sanity build ../public/studio -y && cd .. && next build",
     "start": "vercel dev"
   },
@@ -21,6 +21,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/cli": "^2.10.0",
     "@sanity/image-url": "^0.140.22",
+    "aos": "^2.3.4",
     "concurrently": "^6.1.0",
     "framer-motion": "^4.1.17",
     "next": "^10.2.0",

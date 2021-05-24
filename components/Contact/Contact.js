@@ -41,10 +41,10 @@ export function Contact() {
           <Text
             fontSize={{ base: '0.8rem', sm: '0.8rem', md: '1rem', lg: '1rem' }}
           >
-            to create game-changing experiences.
+            and create game-changing experiences.
           </Text>
         </VStack>
-        <ButtonContact>Let's Talk</ButtonContact>
+        <ButtonContact className="contact__title__button">Let's Talk</ButtonContact>
       </Stack>
       <Stack
         direction="row"
@@ -53,22 +53,26 @@ export function Contact() {
         spacing={20}
       >
         {Socials.map((social, index) => (
-          <Link key={index} href={social.url}>
-            <a target="_blank" rel="noopener noreferrer">
-              <Icon
-                as={FontAwesomeIcon}
-                size="lg"
-                icon={
-                  social.name === 'ig'
-                    ? faInstagram
-                    : social.name === 'linkedin'
-                    ? faLinkedinIn
-                    : social.name === 'github'
-                    ? faGithub
-                    : ''
-                }
-              />
-            </a>
+          <Link
+            key={index}
+            href={social.url}
+            target="_blank"
+            aria-label={social.ariaLabel}
+            rel="noopener noreferrer"
+          >
+            <Icon
+              as={FontAwesomeIcon}
+              size="lg"
+              icon={
+                social.name === 'ig'
+                  ? faInstagram
+                  : social.name === 'github'
+                  ? faGithub
+                  : social.name === 'linkedin'
+                  ? faLinkedinIn
+                  : null
+              }
+            />
           </Link>
         ))}
       </Stack>
@@ -97,7 +101,7 @@ const Title = ({ children }) => {
 const ButtonContact = ({ children }) => {
   return (
     <Stack>
-      <Link href="/#form">
+      <Link href="/#form" textDecor="none">
         <Button colorScheme="teal" px={10}>
           {children}
         </Button>

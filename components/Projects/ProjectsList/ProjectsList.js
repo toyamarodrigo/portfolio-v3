@@ -14,6 +14,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Search2Icon } from '@chakra-ui/icons';
 import { faCode } from '@fortawesome/free-solid-svg-icons';
 import ImageUrlBuilder from '@sanity/image-url';
+import { motion } from 'framer-motion';
+
+const MotionStack = motion(Stack);
 
 export default function ProjectsList({ posts, isShowing }) {
   const [mappedPosts, setMappedPosts] = useState([]);
@@ -69,6 +72,7 @@ const ProjectBody = ({ post }) => {
       paddingBottom={{ base: 8, sm: 8, md: 8 }}
       w={{ md: '100%', lg: '50%' }}
       h={{ lg: '100%' }}
+      layout
     >
       <Stack justifyContent="center" marginLeft={4} spacing={4}>
         <Text as={'h3'}>{post.title}</Text>
@@ -83,7 +87,7 @@ const ProjectBody = ({ post }) => {
 
 const ProjectItem = ({ children, post, index }) => {
   return (
-    <Stack
+    <MotionStack
       position="relative"
       borderRadius={20}
       overflow="hidden"
@@ -99,6 +103,12 @@ const ProjectItem = ({ children, post, index }) => {
         sm: 'column-reverse',
         md: 'column-reverse',
       }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      layout
     >
       <Image
         src={post.mainImage}
@@ -113,7 +123,7 @@ const ProjectItem = ({ children, post, index }) => {
         borderBottomRightRadius={{ md: 20 }}
       />
       {children}
-    </Stack>
+    </MotionStack>
   );
 };
 

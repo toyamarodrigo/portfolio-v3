@@ -16,6 +16,9 @@ import {
   DrawerBody,
 } from '@chakra-ui/react';
 import { HamburgerIcon, SunIcon } from '@chakra-ui/icons';
+import { motion } from 'framer-motion';
+
+const MotionStack = motion(Stack);
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,7 +28,7 @@ export function Navbar() {
 
   return (
     <>
-      <Stack
+      <MotionStack
         id="navbar"
         className="navbar"
         position="absolute"
@@ -33,6 +36,9 @@ export function Navbar() {
         alignItems="center"
         px={{ base: 10, sm: 20, lg: 20, xl: 80 }}
         width="100%"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
         <Stack
           direction="row"
@@ -97,7 +103,7 @@ export function Navbar() {
             </DrawerBody>
           </DrawerContent>
         </Drawer>
-      </Stack>
+      </MotionStack>
     </>
   );
 }

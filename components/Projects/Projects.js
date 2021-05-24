@@ -23,7 +23,13 @@ export function Projects({ posts }) {
       >
         <Title>Projects.</Title>
       </Stack>
-      <Stack justifyContent="center" alignItems="center" w={930} spacing={20}>
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        w={930}
+        spacing={20}
+        className="projects__list"
+      >
         <ProjectsList posts={posts} isShowing={isShowing} />
         <Button colorScheme={'red'} paddingX={10} onClick={handleShowProject}>
           {!isShowing ? 'Show more' : 'Show less'}
