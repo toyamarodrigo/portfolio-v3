@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import Link from 'next/link';
 import {
-  IconButton,
   useDisclosure,
   HStack,
   Stack,
   Button,
   Icon,
+  IconButton,
   VStack,
   Drawer,
   DrawerOverlay,
@@ -14,14 +14,17 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
+  useColorMode,
 } from '@chakra-ui/react';
-import { HamburgerIcon, SunIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, SunIcon, MoonIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
 
 const MotionStack = motion(Stack);
 
 export function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const btnMenuRef = useRef();
 
   const Links = ['Home', 'Projects', 'About', 'Contact'];
@@ -95,9 +98,12 @@ export function Navbar() {
                   ))}
                 </VStack>
                 <VStack alignItems="flex-start">
-                  <Button borderRadius="50%" padding={0}>
-                    <Icon as={SunIcon} />
-                  </Button>
+                  <IconButton
+                    borderRadius="50%"
+                    padding={0}
+                    onClick={toggleColorMode}
+                    icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
+                  />
                 </VStack>
               </Stack>
             </DrawerBody>
