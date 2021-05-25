@@ -7,6 +7,9 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 import { Socials } from './constants';
+import { motion } from 'framer-motion';
+
+const MotionLink = motion(Link);
 
 export function Contact() {
   return (
@@ -35,30 +38,39 @@ export function Contact() {
               md: '1.6rem',
               lg: '1.953rem',
             }}
+            data-aos="fade-down"
+            data-aos-duration="2000"
           >
             Let's work together
           </Text>
           <Text
             fontSize={{ base: '0.8rem', sm: '0.8rem', md: '1rem', lg: '1rem' }}
+            data-aos="fade-down"
+            data-aos-duration="2000"
           >
             and create game-changing experiences.
           </Text>
         </VStack>
-        <ButtonContact className="contact__title__button">Let's Talk</ButtonContact>
+        <ButtonContact className="contact__title__button">
+          Let's Talk
+        </ButtonContact>
       </Stack>
       <Stack
         direction="row"
         justifyContent="center"
         className="contact__socials"
         spacing={20}
+        data-aos="fade-down"
       >
         {Socials.map((social, index) => (
-          <Link
+          <MotionLink
             key={index}
             href={social.url}
             target="_blank"
             aria-label={social.ariaLabel}
             rel="noopener noreferrer"
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.95 }}
           >
             <Icon
               as={FontAwesomeIcon}
@@ -73,7 +85,7 @@ export function Contact() {
                   : null
               }
             />
-          </Link>
+          </MotionLink>
         ))}
       </Stack>
       <EclipseTwo />
@@ -91,6 +103,8 @@ const Title = ({ children }) => {
         as={'h1'}
         fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
         marginBottom={8}
+        data-aos="fade-down"
+        data-aos-duration="2000"
       >
         {children}
       </Text>
@@ -101,11 +115,17 @@ const Title = ({ children }) => {
 const ButtonContact = ({ children }) => {
   return (
     <Stack>
-      <Link href="/#form" textDecor="none">
+      <MotionLink
+        href="/mailto:toyama.rodrigo@gmail.com"
+        textDecor="none"
+        data-aos="zoom-in"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+      >
         <Button colorScheme="teal" px={10}>
           {children}
         </Button>
-      </Link>
+      </MotionLink>
     </Stack>
   );
 };
@@ -126,6 +146,8 @@ const EclipseTwo = () => {
       height="2083px"
       borderRadius="50%"
       zIndex={-1}
+      data-aos="fade-up"
+      data-aos-duration="2000"
     />
   );
 };

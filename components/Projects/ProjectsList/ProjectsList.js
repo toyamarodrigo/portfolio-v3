@@ -105,9 +105,7 @@ const ProjectItem = ({ children, post, index }) => {
       }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      data-aos="zoom-in"
       layout
     >
       <Image

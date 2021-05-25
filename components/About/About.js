@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Stack,
   Text,
@@ -11,8 +11,19 @@ import {
   Link,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { motion } from 'framer-motion';
+
+const MotionStack = motion(Stack);
+const MotionBox = motion(Box);
 
 export function About() {
+  const [offSetY, setOffSetY] = useState(0);
+  const handleScroll = () => setOffSetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <Stack
       position="relative"
@@ -21,7 +32,7 @@ export function About() {
       justifyContent="center"
       alignItems="center"
     >
-      <EclipseOne />
+      <EclipseOne offSetY={offSetY} />
       <Stack
         justifyContent="center"
         alignItems="center"
@@ -53,23 +64,25 @@ export function About() {
 
 const ButtonViewProject = ({ children }) => {
   return (
-    <Stack
+    <MotionStack
       justifyContent="center"
       alignItems="center"
       className="about__button"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       <NextLink href="/#projects">
         <Button colorScheme={'teal'} paddingX={10}>
           {children}
         </Button>
       </NextLink>
-    </Stack>
+    </MotionStack>
   );
 };
 
 const Title = ({ children }) => {
   return (
-    <VStack>
+    <VStack data-aos="fade-down">
       <Text
         as={'h1'}
         fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
@@ -86,6 +99,7 @@ const Subtitle = () => {
     <VStack
       textAlign="center"
       w={{ base: '80%', sm: '60%', md: '80&', lg: '80%' }}
+      data-aos="fade-down"
     >
       <Text className="about__title__presentation" marginBottom={4}>
         Hi, I'm Rodrigo, a Fullstack Developer based in Argentina.
@@ -106,6 +120,8 @@ const GoalTitle = () => {
       display={{ base: 'none', md: 'block' }}
       colStart={{ md: 9, lg: 8 }}
       zIndex={-1}
+      data-aos="fade-down"
+      data-aos-duration="2000"
     >
       <Stack>
         <Text
@@ -132,7 +148,12 @@ const FirstGoal = () => {
       colEnd={{ base: 12, sm: 12, md: 11, lg: 8 }}
       marginBottom={16}
     >
-      <Stack justifyContent="center" alignItems="center">
+      <Stack
+        justifyContent="center"
+        alignItems="center"
+        data-aos="fade-right"
+        data-aos-duration="2000"
+      >
         <Image
           src={'/goals-image1.jpg'}
           alt="goal image"
@@ -146,6 +167,8 @@ const FirstGoal = () => {
         padding={4}
         marginTop={6}
         className="about__goal__first-text"
+        data-aos="fade-right"
+        data-aos-duration="2000"
       >
         <Text>
           My goal is to provide high-quality work to clients no matter if the
@@ -183,8 +206,14 @@ const SecondGoal = () => {
           alt="goal image"
           h={'auto'}
           borderRadius="20px"
+          data-aos="fade-right"
+          data-aos-duration="2000"
         />
-        <Stack className="about__goal__second-text">
+        <Stack
+          className="about__goal__second-text"
+          data-aos="fade-left"
+          data-aos-duration="2000"
+        >
           <Text>
             By 2018, I thought it would be a good idea to start
             documenting/blogging my journey of becoming a developer to inspire
@@ -210,9 +239,9 @@ const SecondGoal = () => {
   );
 };
 
-const EclipseOne = () => {
+const EclipseOne = ({ offSetY }) => {
   return (
-    <Box
+    <MotionBox
       className="about__eclipse"
       display={{
         base: 'none',
@@ -227,13 +256,16 @@ const EclipseOne = () => {
       height="2450px"
       borderRadius="50%"
       zIndex={-1}
+      animate={{ y: offSetY * 0.2 }}
+      data-aos="fade-down"
+      data-aos-duration="2000"
     />
   );
 };
 
 const EclipseTwo = () => {
   return (
-    <Box
+    <MotionBox
       className="about__eclipse2"
       display={{
         base: 'block',
@@ -247,6 +279,8 @@ const EclipseTwo = () => {
       height="194px"
       borderRadius="50%"
       zIndex={-1}
+      data-aos="fade-down"
+      data-aos-duration="2000"
     />
   );
 };

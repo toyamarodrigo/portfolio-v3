@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Icon, Stack, Text, List, ListItem } from '@chakra-ui/react';
@@ -38,6 +38,14 @@ const item = {
 };
 
 export function Landing() {
+  const [offSetY, setOffSetY] = useState(0);
+  const handleScroll = () => setOffSetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <Stack
       position="relative"
@@ -55,7 +63,7 @@ export function Landing() {
       id="home"
       className="landing"
     >
-      <EclipseOne />
+      <EclipseOne offSetY={offSetY} />
       <Stack
         className="landing__container-text"
         width="356px"
@@ -117,7 +125,7 @@ export function Landing() {
         </MotionList>
       </Stack>
       <Logo />
-      <EclipseTwo />
+      <EclipseTwo offSetY={offSetY} />
     </Stack>
   );
 }
@@ -158,7 +166,7 @@ const Subtitle = ({ children }) => {
   );
 };
 
-const EclipseOne = () => {
+const EclipseOne = ({ offSetY }) => {
   return (
     <MotionBox
       className="landing__eclipse"
@@ -175,13 +183,12 @@ const EclipseOne = () => {
       height="2223px"
       borderRadius="50%"
       initial={{ opacity: 0 }}
-      animate={{ scale: 1, x: [800, 0], y: [400, 0], opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      animate={{ scale: 1, x: [800, 0], y: offSetY * 0.2, opacity: 1 }}
     />
   );
 };
 
-const EclipseTwo = () => {
+const EclipseTwo = ({ offSetY }) => {
   return (
     <MotionBox
       className="landing__eclipse2"
@@ -195,10 +202,8 @@ const EclipseTwo = () => {
       animate={{
         scale: [0.7, 1],
         x: [-200, 0],
+        y: offSetY * 0.3,
         opacity: 1,
-      }}
-      transition={{
-        duration: 1,
       }}
     />
   );

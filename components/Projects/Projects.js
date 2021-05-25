@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Stack, Text, Button, Box } from '@chakra-ui/react';
 import ProjectsList from './ProjectsList/ProjectsList';
+import { motion } from 'framer-motion';
+
+const MotionButton = motion(Button);
 
 export function Projects({ posts }) {
   const [isShowing, setIsShowing] = useState(false);
@@ -31,9 +34,15 @@ export function Projects({ posts }) {
         className="projects__list"
       >
         <ProjectsList posts={posts} isShowing={isShowing} />
-        <Button colorScheme={'red'} paddingX={10} onClick={handleShowProject}>
+        <MotionButton
+          colorScheme={'red'}
+          paddingX={10}
+          onClick={handleShowProject}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           {!isShowing ? 'Show more' : 'Show less'}
-        </Button>
+        </MotionButton>
       </Stack>
     </Stack>
   );
@@ -44,6 +53,8 @@ const Title = ({ children }) => {
     <Text
       as={'h1'}
       fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
+      data-aos="fade-up"
+      data-aos-duration="1000"
     >
       {children}
     </Text>
