@@ -43,7 +43,7 @@ export function About({ color }) {
         marginBottom={100}
         color={color}
       >
-        <Title>About</Title>
+        <Title>About.</Title>
         <Subtitle />
       </Stack>
       <Grid
@@ -92,7 +92,7 @@ const Title = ({ children }) => {
         as={'h1'}
         fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
         marginBottom={8}
-        opacity={0.3}
+        opacity={0.2}
       >
         {children}
       </Text>
@@ -247,7 +247,7 @@ const SecondGoal = () => {
 };
 
 const EclipseOne = ({ offSetY }) => {
-  const eclipseBg = useColorModeValue('#85a2eb', '#0c1e4e');
+  const eclipseBg = useColorModeValue('#85a2eb', '#1f2b4d');
   return (
     <MotionBox
       className="about__eclipse"

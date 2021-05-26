@@ -24,7 +24,7 @@ export function Projects({ posts, color }) {
         className="projects__title"
         marginBottom={100}
         color={color}
-        opacity={0.3}
+        opacity={0.2}
       >
         <Title>Projects.</Title>
       </Stack>

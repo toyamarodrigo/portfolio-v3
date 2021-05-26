@@ -10,6 +10,8 @@ import {
   Button,
   Link,
   Collapse,
+  Spinner,
+  Select,
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Search2Icon } from '@chakra-ui/icons';
@@ -21,6 +23,7 @@ const MotionStack = motion(Stack);
 
 export default function ProjectsList({ posts, isShowing }) {
   const [mappedPosts, setMappedPosts] = useState([]);
+  const [filter, setFilter] = useState('recent');
 
   useEffect(() => {
     if (posts.length) {
@@ -33,6 +36,7 @@ export default function ProjectsList({ posts, isShowing }) {
         posts.map((post) => {
           return {
             ...post,
+            _createdAt: new Date(post._createdAt),
             mainImage: imgBuilder.image(post.mainImage),
           };
         })
@@ -40,29 +44,66 @@ export default function ProjectsList({ posts, isShowing }) {
     }
   }, []);
 
-  if (!mappedPosts.length) <Text as={'h1'}>LOADING..</Text>;
+  const handleChangeFilter = (e) => setFilter(e.target.value);
 
-  if (!isShowing) {
-    return (
-      <>
-        {mappedPosts.slice(0, 3).map((post, index) => (
+  const postFilteredRecent = () => {
+    if (!isShowing) {
+      return mappedPosts
+        .sort((a, b) => b._createdAt - a._createdAt)
+        .slice(0, 3)
+        .map((post, index) => (
           <ProjectItem key={index} post={post} index={index}>
             <ProjectBody post={post} />
           </ProjectItem>
-        ))}
-      </>
-    );
-  } else {
-    return (
-      <>
-        {mappedPosts.map((post, index) => (
+        ));
+    } else {
+      return mappedPosts
+        .sort((a, b) => b._createdAt - a._createdAt)
+        .map((post, index) => (
           <ProjectItem key={index} post={post} index={index}>
             <ProjectBody post={post} />
           </ProjectItem>
-        ))}
-      </>
-    );
-  }
+        ));
+    }
+  };
+
+  const postFilteredOldest = () => {
+    if (!isShowing) {
+      return mappedPosts
+        .sort((a, b) => a._createdAt - b._createdAt)
+        .slice(0, 3)
+        .map((post, index) => (
+          <ProjectItem key={index} post={post} index={index}>
+            <ProjectBody post={post} />
+          </ProjectItem>
+        ));
+    } else {
+      return mappedPosts
+        .sort((a, b) => a._createdAt - b._createdAt)
+        .map((post, index) => (
+          <ProjectItem key={index} post={post} index={index}>
+            <ProjectBody post={post} />
+          </ProjectItem>
+        ));
+    }
+  };
+
+  if (!mappedPosts.length) <Spinner />;
+
+  return (
+    <>
+      <Select
+        variant="filled"
+        w={120}
+        alignSelf="flex-end"
+        onChange={handleChangeFilter}
+      >
+        <option value="recent">Recent</option>
+        <option value="oldest">Oldest</option>
+      </Select>
+      {filter === 'recent' ? postFilteredRecent() : postFilteredOldest()}
+    </>
+  );
 }
 
 const ProjectBody = ({ post }) => {
@@ -106,6 +147,7 @@ const ProjectItem = ({ children, post, index }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       data-aos="zoom-in"
+      boxShadow="xl"
     >
       <Image
         src={post.mainImage}
