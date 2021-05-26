@@ -268,7 +268,6 @@ const EclipseOne = ({ offSetY }) => {
       animate={{ y: offSetY * 0.2 }}
       transition={{ type: 'spring', stiffness: 50 }}
       data-aos="fade-down"
-      data-aos-duration="2000"
     />
   );
 };
@@ -292,7 +291,6 @@ const EclipseTwo = () => {
       borderRadius="50%"
       zIndex={0}
       data-aos="fade-down"
-      data-aos-duration="2000"
     />
   );
 };
