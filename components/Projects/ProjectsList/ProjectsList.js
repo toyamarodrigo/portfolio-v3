@@ -9,6 +9,7 @@ import {
   Icon,
   Button,
   Link,
+  Collapse,
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Search2Icon } from '@chakra-ui/icons';
@@ -168,27 +169,33 @@ const BadgeContainers = ({ post }) => {
 };
 
 const DescriptionContainer = ({ post }) => {
+  const [show, setShow] = useState(false);
+  const handleToggle = () => setShow(!show);
   return (
     <VStack alignItems="flex-start">
       {post.body.map((text) =>
         text.children.map((textChildren) =>
-          textChildren.text.length < 300 ? (
-            <Text as={'p'} color="white" marginBottom={4}>
-              {textChildren.text}
-            </Text>
-          ) : (
-            <Text as={'p'} color="white" marginBottom={4}>
-              {`${textChildren.text.substring(0, 250)}`}
+          textChildren.text.length > 150 ? (
+            <>
+              <Collapse startingHeight={50} in={show}>
+                <Text as={'p'} color="white" marginBottom={4}>
+                  {`${textChildren.text}`}
+                </Text>
+              </Collapse>
               <Button
                 color="cyan"
-                size="sm"
+                size="xs"
                 backgroundColor="transparent"
                 paddingX={0}
                 marginLeft={1}
+                onClick={handleToggle}
+                border="none"
               >
                 More...
               </Button>
-            </Text>
+            </>
+          ) : (
+            <Text>{textChildren.text}</Text>
           )
         )
       )}
