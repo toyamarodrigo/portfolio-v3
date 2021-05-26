@@ -72,9 +72,8 @@ const ProjectBody = ({ post }) => {
       paddingBottom={{ base: 8, sm: 8, md: 8 }}
       w={{ md: '100%', lg: '50%' }}
       h={{ lg: '100%' }}
-      layout
     >
-      <Stack justifyContent="center" marginLeft={4} spacing={4}>
+      <Stack justifyContent="center" marginLeft={4} spacing={4} color="#fbfbfc">
         <Text as={'h3'}>{post.title}</Text>
         <Text as={'h5'}>Tech used</Text>
         <BadgeContainers post={post} />
@@ -106,7 +105,6 @@ const ProjectItem = ({ children, post, index }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       data-aos="zoom-in"
-      layout
     >
       <Image
         src={post.mainImage}
@@ -130,7 +128,7 @@ const ButtonsContainers = ({ post }) => {
     <Stack direction="row" w="100%">
       <NextLink href={post.buttonDemo} as={`${post.buttonDemo}`} passHref>
         <Link w="50%" isExternal>
-          <Button w="100%" colorScheme="pink">
+          <Button w="100%" backgroundColor="pink.500">
             <Search2Icon marginRight={2} />
             <Text lineHeight="3">View</Text>
           </Button>
@@ -140,7 +138,7 @@ const ButtonsContainers = ({ post }) => {
       {post.buttonCode ? (
         <NextLink href={post.buttonCode} as={`${post.buttonCode}`} passHref>
           <Link w="50%" isExternal>
-            <Button w="100%" colorScheme="blackAlpha">
+            <Button w="100%" backgroundColor="blackAlpha.500">
               <Icon as={FontAwesomeIcon} icon={faCode} marginRight={2} />
               <Text lineHeight="3">Code</Text>
             </Button>

@@ -4,8 +4,6 @@ import {
   useDisclosure,
   HStack,
   Stack,
-  Button,
-  Icon,
   IconButton,
   VStack,
   Drawer,
@@ -21,10 +19,9 @@ import { motion } from 'framer-motion';
 
 const MotionStack = motion(Stack);
 
-export function Navbar() {
+export function Navbar({ color }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-
   const btnMenuRef = useRef();
 
   const Links = ['Home', 'Projects', 'About', 'Contact'];
@@ -48,6 +45,7 @@ export function Navbar() {
           alignItems="center"
           justifyContent="space-between"
           w="100%"
+          color={color}
         >
           <Logo>rt.codes</Logo>
           <Stack alignItems="center">
@@ -62,9 +60,12 @@ export function Navbar() {
                   {link}
                 </Link>
               ))}
-              <Button borderRadius="50%" padding={0}>
-                <Icon as={SunIcon} />
-              </Button>
+              <IconButton
+                isRound="true"
+                padding={0}
+                onClick={toggleColorMode}
+                icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
+              />
             </HStack>
           </Stack>
           <IconButton
@@ -75,7 +76,6 @@ export function Navbar() {
             ref={btnMenuRef}
             onClick={onOpen}
             backgroundColor="transparent"
-            color="white"
           />
         </Stack>
         <Drawer
@@ -87,10 +87,12 @@ export function Navbar() {
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton color="white" />
-            <DrawerHeader marginLeft={2}>Menu</DrawerHeader>
+            <DrawerHeader color="white" marginLeft={2} marginBottom={6}>
+              Menu
+            </DrawerHeader>
             <DrawerBody>
               <Stack spacing={6} marginLeft={4}>
-                <VStack spacing={6} alignItems="flex-start">
+                <VStack spacing={6} alignItems="flex-start" color="white">
                   {Links.map((link) => (
                     <Link key={link} href={`#${link.toLowerCase()}`}>
                       {link}
@@ -99,7 +101,7 @@ export function Navbar() {
                 </VStack>
                 <VStack alignItems="flex-start">
                   <IconButton
-                    borderRadius="50%"
+                    isRound="true"
                     padding={0}
                     onClick={toggleColorMode}
                     icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}

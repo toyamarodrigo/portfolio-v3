@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Box, Icon, Stack, Text, List, ListItem } from '@chakra-ui/react';
+import {
+  Box,
+  Icon,
+  Stack,
+  Text,
+  List,
+  ListItem,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileAlt, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -37,11 +45,11 @@ const item = {
   },
 };
 
-export function Landing() {
+export function Landing({ color }) {
   const [offSetY, setOffSetY] = useState(0);
   const handleScroll = () => setOffSetY(window.pageYOffset);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -78,9 +86,10 @@ export function Landing() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
+          zIndex={1}
         >
-          <Title>Rodrigo Toyama.</Title>
-          <Subtitle>Full-stack Developer</Subtitle>
+          <Title color={color}>Rodrigo Toyama.</Title>
+          <Subtitle color={color}>Full-stack Developer</Subtitle>
         </MotionStack>
         <MotionList
           display="flex"
@@ -167,6 +176,7 @@ const Subtitle = ({ children }) => {
 };
 
 const EclipseOne = ({ offSetY }) => {
+  const eclipseOne = useColorModeValue('#85a2eb', '#293552');
   return (
     <MotionBox
       className="landing__eclipse"
@@ -176,19 +186,23 @@ const EclipseOne = ({ offSetY }) => {
         md: 'none',
         lg: 'block',
       }}
+      bg={eclipseOne}
       position="absolute"
       top="-60%"
       left="52%"
       width="2223px"
       height="2223px"
       borderRadius="50%"
+      zIndex={0}
       initial={{ opacity: 0 }}
       animate={{ scale: 1, x: [800, 0], y: offSetY * 0.2, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 50 }}
     />
   );
 };
 
 const EclipseTwo = ({ offSetY }) => {
+  const eclipseTwo = useColorModeValue('#6acadb', '#e9fbfe');
   return (
     <MotionBox
       className="landing__eclipse2"
@@ -198,6 +212,7 @@ const EclipseTwo = ({ offSetY }) => {
       top="90%"
       right="92%"
       borderRadius="50%"
+      bg={eclipseTwo}
       initial={{ opacity: 0 }}
       animate={{
         scale: [0.7, 1],
@@ -205,6 +220,7 @@ const EclipseTwo = ({ offSetY }) => {
         y: offSetY * 0.3,
         opacity: 1,
       }}
+      transition={{ type: 'spring', stiffness: 10 }}
     />
   );
 };
