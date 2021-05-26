@@ -127,7 +127,7 @@ const ButtonContact = ({ children }) => {
   return (
     <Stack>
       <MotionLink
-        href="/mailto:toyama.rodrigo@gmail.com"
+        href="mailto:toyama.rodrigo@gmail.com"
         textDecor="none"
         data-aos="fade-down"
         whileHover={{ scale: 1.05 }}
