@@ -264,9 +264,9 @@ const EclipseOne = ({ offSetY }) => {
       width="2450px"
       height="2450px"
       borderRadius="50%"
-      zIndex={0}
-      animate={{ y: offSetY * 0.2 }}
-      transition={{ type: 'spring', stiffness: 50 }}
+      zIndex={-1}
+      animate={{ y: offSetY * 0.15 }}
+      transition={{ type: 'spring', stiffness: 10 }}
       data-aos="fade-down"
     />
   );
