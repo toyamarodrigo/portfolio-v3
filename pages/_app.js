@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-import theme from './theme';
+import theme from '../components/theme';
 
 import AOS from 'aos';
 
