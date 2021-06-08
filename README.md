@@ -14,3 +14,16 @@ Updating my web portfolio to v3, this time I'm trying to implement [NextJS]([www
 * Deploy site to [Vercel](https://vercel.com/)
   
 ## Screenshots
+
+### Dark Desktop
+![Landing Dark Desktop](https://i.imgur.com/k5RZyrk.png)
+
+### Dark Mobile
+![Landing Dark Mobile](https://i.imgur.com/391lH4X.png)
+
+
+### Light Desktop
+![Landing Light Desktop](https://i.imgur.com/MPK3dG6.png)
+
+### Light Mobile
+![Landing Light Mobile](https://i.imgur.com/NLS4jnB.png)
