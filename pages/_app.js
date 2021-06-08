@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-import theme from './theme';
+
 import AOS from 'aos';
 
 import 'aos/dist/aos.css';
@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
     AOS.init();
   }, []);
   return (
-    <ChakraProvider resetCSS theme={theme}>
+    <ChakraProvider>
       <AnimateSharedLayout>
         <AnimatePresence>
           <Component {...pageProps} />

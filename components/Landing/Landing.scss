@@ -1,14 +1,5 @@
-#home {
-  background-color: $background-dark;
-}
-
 .landing {
-  &__eclipse {
-    background: rgba(133, 162, 235, 0.3);
-  }
-
   &__eclipse2 {
-    background: #e9fbfe;
     box-shadow: inset 35px -21px 4px rgba(0, 0, 0, 0.25);
   }
 
@@ -17,11 +8,9 @@
       h1 {
         font-family: $font-poppins;
         font-weight: bold;
-        color: $font-light;
         margin-bottom: 10px;
       }
       h4 {
-        color: $font-light;
         font-family: $font-poppins;
         font-weight: 200;
       }

@@ -1,6 +1,6 @@
 .contact {
   &__eclipse {
-    background: #ffe0c4;
+    // background: #ffe0c4;
     box-shadow: inset 0px 22px 0px 2px rgba(0, 0, 0, 0.25);
   }
   &__eclipse2 {
@@ -11,14 +11,12 @@
     h1 {
       font-family: $font-poppins;
       font-weight: bold;
-      color: rgba(251, 251, 252, 0.2);
     }
     &__subtitle {
       font-family: $font-poppins;
       font-weight: bold;
       line-height: 1.3rem;
       margin-bottom: 1em !important;
-      color: white;
     }
     .chakra-link:hover {
       text-decoration: none !important;

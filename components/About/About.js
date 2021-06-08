@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import {
   Stack,
   Text,
@@ -9,6 +9,7 @@ import {
   GridItem,
   Button,
   Link,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { motion } from 'framer-motion';
@@ -16,14 +17,15 @@ import { motion } from 'framer-motion';
 const MotionStack = motion(Stack);
 const MotionBox = motion(Box);
 
-export function About() {
+export function About({ color }) {
   const [offSetY, setOffSetY] = useState(0);
   const handleScroll = () => setOffSetY(window.pageYOffset);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   return (
     <Stack
       position="relative"
@@ -31,6 +33,7 @@ export function About() {
       className="about"
       justifyContent="center"
       alignItems="center"
+      zIndex={1}
     >
       <EclipseOne offSetY={offSetY} />
       <Stack
@@ -38,8 +41,9 @@ export function About() {
         alignItems="center"
         className="about__title"
         marginBottom={100}
+        color={color}
       >
-        <Title>About</Title>
+        <Title>About.</Title>
         <Subtitle />
       </Stack>
       <Grid
@@ -49,6 +53,7 @@ export function About() {
         className="about__goal"
         templateColumns="repeat(12,1fr)"
         gap={4}
+        color={color}
       >
         <FirstGoal />
         <GoalTitle />
@@ -87,6 +92,7 @@ const Title = ({ children }) => {
         as={'h1'}
         fontSize={{ base: '4rem', sm: '5rem', md: '8rem', lg: '11.642rem' }}
         marginBottom={8}
+        opacity={0.2}
       >
         {children}
       </Text>
@@ -133,6 +139,7 @@ const GoalTitle = () => {
             lg: '14.552rem',
           }}
           className="about__goal__title"
+          opacity={0.3}
         >
           Goal
         </Text>
@@ -240,6 +247,7 @@ const SecondGoal = () => {
 };
 
 const EclipseOne = ({ offSetY }) => {
+  const eclipseBg = useColorModeValue('#85a2eb', '#1f2b4d');
   return (
     <MotionBox
       className="about__eclipse"
@@ -249,6 +257,7 @@ const EclipseOne = ({ offSetY }) => {
         md: 'block',
         lg: 'block',
       }}
+      bg={eclipseBg}
       position="absolute"
       top="-40%"
       right="30%"
@@ -256,14 +265,15 @@ const EclipseOne = ({ offSetY }) => {
       height="2450px"
       borderRadius="50%"
       zIndex={-1}
-      animate={{ y: offSetY * 0.2 }}
+      animate={{ y: offSetY * 0.15 }}
+      transition={{ type: 'spring', stiffness: 10 }}
       data-aos="fade-down"
-      data-aos-duration="2000"
     />
   );
 };
 
 const EclipseTwo = () => {
+  const eclipseBg = useColorModeValue('#ffb87a', '#ffe0c4');
   return (
     <MotionBox
       className="about__eclipse2"
@@ -273,14 +283,14 @@ const EclipseTwo = () => {
         md: 'block',
         lg: 'block',
       }}
+      bg={eclipseBg}
       position="absolute"
       bottom={-30}
       width="194px"
       height="194px"
       borderRadius="50%"
-      zIndex={-1}
+      zIndex={0}
       data-aos="fade-down"
-      data-aos-duration="2000"
     />
   );
 };

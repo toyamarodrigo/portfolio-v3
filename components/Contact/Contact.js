@@ -1,5 +1,14 @@
 import React from 'react';
-import { Stack, Box, VStack, Text, Button, Link, Icon } from '@chakra-ui/react';
+import {
+  Stack,
+  Box,
+  VStack,
+  Text,
+  Button,
+  Link,
+  Icon,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faInstagram,
@@ -11,7 +20,7 @@ import { motion } from 'framer-motion';
 
 const MotionLink = motion(Link);
 
-export function Contact() {
+export function Contact({ color }) {
   return (
     <Stack
       position="relative"
@@ -28,6 +37,7 @@ export function Contact() {
         alignItems="center"
         className="contact__title"
         marginBottom={50}
+        color={color}
       >
         <Title>Contact</Title>
         <VStack className="contact__title__subtitle" w={'100%'}>
@@ -98,6 +108,7 @@ const Title = ({ children }) => {
     <VStack
       position="absolute"
       bottom={{ base: '50%', sm: '45%', md: '30%', lg: '10%' }}
+      opacity={0.2}
     >
       <Text
         as={'h1'}
@@ -116,9 +127,9 @@ const ButtonContact = ({ children }) => {
   return (
     <Stack>
       <MotionLink
-        href="/mailto:toyama.rodrigo@gmail.com"
+        href="mailto:toyama.rodrigo@gmail.com"
         textDecor="none"
-        data-aos="zoom-in"
+        data-aos="fade-down"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -131,6 +142,7 @@ const ButtonContact = ({ children }) => {
 };
 
 const EclipseTwo = () => {
+  const eclipseBg = useColorModeValue('#ffb87a', '#ffe0c4');
   return (
     <Box
       className="contact__eclipse2"
@@ -140,12 +152,13 @@ const EclipseTwo = () => {
         md: 'block',
         lg: 'block',
       }}
+      bg={eclipseBg}
       position="absolute"
       top={'80%'}
       width="2083px"
       height="2083px"
       borderRadius="50%"
-      zIndex={-1}
+      zIndex={1}
       data-aos="fade-up"
       data-aos-duration="2000"
     />

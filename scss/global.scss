@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background-color: $background-dark !important;
+  // background-color: $background-dark !important;
   overflow-x: hidden !important;
 }
 
@@ -15,7 +15,6 @@ h3,
 h4,
 h5 {
   font-family: $font-poppins;
-  color: $font-light;
   line-height: 1.3 !important;
 }
 

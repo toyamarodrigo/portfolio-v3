@@ -9,6 +9,9 @@ import {
   Icon,
   Button,
   Link,
+  Collapse,
+  Spinner,
+  Select,
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Search2Icon } from '@chakra-ui/icons';
@@ -20,6 +23,7 @@ const MotionStack = motion(Stack);
 
 export default function ProjectsList({ posts, isShowing }) {
   const [mappedPosts, setMappedPosts] = useState([]);
+  const [filter, setFilter] = useState('recent');
 
   useEffect(() => {
     if (posts.length) {
@@ -32,6 +36,7 @@ export default function ProjectsList({ posts, isShowing }) {
         posts.map((post) => {
           return {
             ...post,
+            _createdAt: new Date(post._createdAt),
             mainImage: imgBuilder.image(post.mainImage),
           };
         })
@@ -39,29 +44,66 @@ export default function ProjectsList({ posts, isShowing }) {
     }
   }, []);
 
-  if (!mappedPosts.length) <Text as={'h1'}>LOADING..</Text>;
+  const handleChangeFilter = (e) => setFilter(e.target.value);
 
-  if (!isShowing) {
-    return (
-      <>
-        {mappedPosts.slice(0, 3).map((post, index) => (
+  const postFilteredRecent = () => {
+    if (!isShowing) {
+      return mappedPosts
+        .sort((a, b) => b._createdAt - a._createdAt)
+        .slice(0, 3)
+        .map((post, index) => (
           <ProjectItem key={index} post={post} index={index}>
             <ProjectBody post={post} />
           </ProjectItem>
-        ))}
-      </>
-    );
-  } else {
-    return (
-      <>
-        {mappedPosts.map((post, index) => (
+        ));
+    } else {
+      return mappedPosts
+        .sort((a, b) => b._createdAt - a._createdAt)
+        .map((post, index) => (
           <ProjectItem key={index} post={post} index={index}>
             <ProjectBody post={post} />
           </ProjectItem>
-        ))}
-      </>
-    );
-  }
+        ));
+    }
+  };
+
+  const postFilteredOldest = () => {
+    if (!isShowing) {
+      return mappedPosts
+        .sort((a, b) => a._createdAt - b._createdAt)
+        .slice(0, 3)
+        .map((post, index) => (
+          <ProjectItem key={index} post={post} index={index}>
+            <ProjectBody post={post} />
+          </ProjectItem>
+        ));
+    } else {
+      return mappedPosts
+        .sort((a, b) => a._createdAt - b._createdAt)
+        .map((post, index) => (
+          <ProjectItem key={index} post={post} index={index}>
+            <ProjectBody post={post} />
+          </ProjectItem>
+        ));
+    }
+  };
+
+  if (!mappedPosts.length) <Spinner />;
+
+  return (
+    <>
+      <Select
+        variant="filled"
+        w={120}
+        alignSelf="flex-end"
+        onChange={handleChangeFilter}
+      >
+        <option value="recent">Recent</option>
+        <option value="oldest">Oldest</option>
+      </Select>
+      {filter === 'recent' ? postFilteredRecent() : postFilteredOldest()}
+    </>
+  );
 }
 
 const ProjectBody = ({ post }) => {
@@ -72,9 +114,8 @@ const ProjectBody = ({ post }) => {
       paddingBottom={{ base: 8, sm: 8, md: 8 }}
       w={{ md: '100%', lg: '50%' }}
       h={{ lg: '100%' }}
-      layout
     >
-      <Stack justifyContent="center" marginLeft={4} spacing={4}>
+      <Stack justifyContent="center" marginLeft={4} spacing={4} color="#fbfbfc">
         <Text as={'h3'}>{post.title}</Text>
         <Text as={'h5'}>Tech used</Text>
         <BadgeContainers post={post} />
@@ -106,7 +147,7 @@ const ProjectItem = ({ children, post, index }) => {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       data-aos="zoom-in"
-      layout
+      boxShadow="xl"
     >
       <Image
         src={post.mainImage}
@@ -130,7 +171,7 @@ const ButtonsContainers = ({ post }) => {
     <Stack direction="row" w="100%">
       <NextLink href={post.buttonDemo} as={`${post.buttonDemo}`} passHref>
         <Link w="50%" isExternal>
-          <Button w="100%" colorScheme="pink">
+          <Button w="100%" backgroundColor="pink.500">
             <Search2Icon marginRight={2} />
             <Text lineHeight="3">View</Text>
           </Button>
@@ -140,7 +181,7 @@ const ButtonsContainers = ({ post }) => {
       {post.buttonCode ? (
         <NextLink href={post.buttonCode} as={`${post.buttonCode}`} passHref>
           <Link w="50%" isExternal>
-            <Button w="100%" colorScheme="blackAlpha">
+            <Button w="100%" backgroundColor="blackAlpha.500">
               <Icon as={FontAwesomeIcon} icon={faCode} marginRight={2} />
               <Text lineHeight="3">Code</Text>
             </Button>
@@ -170,27 +211,33 @@ const BadgeContainers = ({ post }) => {
 };
 
 const DescriptionContainer = ({ post }) => {
+  const [show, setShow] = useState(false);
+  const handleToggle = () => setShow(!show);
   return (
     <VStack alignItems="flex-start">
       {post.body.map((text) =>
         text.children.map((textChildren) =>
-          textChildren.text.length < 300 ? (
-            <Text as={'p'} color="white" marginBottom={4}>
-              {textChildren.text}
-            </Text>
-          ) : (
-            <Text as={'p'} color="white" marginBottom={4}>
-              {`${textChildren.text.substring(0, 250)}`}
+          textChildren.text.length > 150 ? (
+            <>
+              <Collapse startingHeight={50} in={show}>
+                <Text as={'p'} color="white" marginBottom={4}>
+                  {`${textChildren.text}`}
+                </Text>
+              </Collapse>
               <Button
                 color="cyan"
-                size="sm"
+                size="xs"
                 backgroundColor="transparent"
                 paddingX={0}
                 marginLeft={1}
+                onClick={handleToggle}
+                border="none"
               >
                 More...
               </Button>
-            </Text>
+            </>
+          ) : (
+            <Text>{textChildren.text}</Text>
           )
         )
       )}

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Stack, Text, Button, Box } from '@chakra-ui/react';
+import { Stack, Text, Button } from '@chakra-ui/react';
 import ProjectsList from './ProjectsList/ProjectsList';
 import { motion } from 'framer-motion';
 
 const MotionButton = motion(Button);
 
-export function Projects({ posts }) {
+export function Projects({ posts, color }) {
   const [isShowing, setIsShowing] = useState(false);
 
   const handleShowProject = () => setIsShowing(!isShowing);
@@ -23,6 +23,8 @@ export function Projects({ posts }) {
         alignItems="center"
         className="projects__title"
         marginBottom={100}
+        color={color}
+        opacity={0.2}
       >
         <Title>Projects.</Title>
       </Stack>
@@ -32,14 +34,16 @@ export function Projects({ posts }) {
         w={930}
         spacing={20}
         className="projects__list"
+        zIndex={2}
       >
         <ProjectsList posts={posts} isShowing={isShowing} />
         <MotionButton
-          colorScheme={'red'}
+          colorScheme="teal"
           paddingX={10}
           onClick={handleShowProject}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          data-aos="fade-down"
         >
           {!isShowing ? 'Show more' : 'Show less'}
         </MotionButton>
