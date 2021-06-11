@@ -4,6 +4,8 @@
 
 Updating my web portfolio to v3, this time I'm trying to implement [NextJS]([www.nextjs.com](https://nextjs.org/)) with [Sanity.io](https://www.sanity.io/) as a Headless CMS to upload my Projects easily! and trying out [ChakraUI](https://chakra-ui.com/) (I'M LOVING IT SO FAR)
 
+Figma Design: [Prototype](https://www.figma.com/proto/Cqqt3DHlPvbrqcmcuXS9PW/WebPortfolio?node-id=5%3A2&scaling=min-zoom)
+
 ## Learned
 
 * [NextJS]([www.nextjs.com](https://nextjs.org/))
