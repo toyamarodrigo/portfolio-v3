@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -49,7 +49,7 @@ export function Landing({ color }) {
   const [offSetY, setOffSetY] = useState(0);
   const handleScroll = () => setOffSetY(window.pageYOffset);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

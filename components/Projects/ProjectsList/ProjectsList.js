@@ -95,7 +95,7 @@ export default function ProjectsList({ posts, isShowing }) {
       <Select
         variant="filled"
         w={120}
-        alignSelf="flex-end"
+        alignSelf={{ lg: "flex-end" }}
         onChange={handleChangeFilter}
       >
         <option value="recent">Recent</option>
