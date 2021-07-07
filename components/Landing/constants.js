@@ -1,22 +1,22 @@
 export const Socials = [
   {
     name: 'file',
-    url: 'https://drive.google.com/file/d/1qvj-0QEZ-wl78jVqgvwL5bEBV66p5rAr/view?usp=sharing',
+    url: 'https://cv.toyamarodrigo.com',
     ariaLabel: 'CV',
   },
   {
     name: 'linkedin',
-    url: 'https://www.linkedin.com/in/rodrigo-toyama-1861b1154/',
+    url: 'https://linkedin.toyamarodrigo.com',
     ariaLabel: 'LinkedIn',
   },
   {
     name: 'github',
-    url: 'https://github.com/toyamarodrigo',
+    url: 'https://github.toyamarodrigo.com',
     ariaLabel: 'Github',
   },
   {
     name: 'mail',
-    url: 'mailto:toyama.rodrigo@gmail.com',
+    url: 'https://mail.toyamarodrigo.com',
     ariaLabel: 'Mail',
   },
 ];
