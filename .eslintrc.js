@@ -31,7 +31,6 @@ module.exports = {
       {
         printWidth: 100,
         trailingComma: "none",
-        jsxSingleQuote: true,
         tabWidth: 2,
         semi: false,
         singleQuote: false,

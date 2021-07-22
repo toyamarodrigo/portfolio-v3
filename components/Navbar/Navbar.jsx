@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import Link from 'next/link';
+import React, { useRef } from "react"
+import Link from "next/link"
 import {
   useDisclosure,
   HStack,
@@ -12,48 +12,48 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  useColorMode,
-} from '@chakra-ui/react';
-import { HamburgerIcon, SunIcon, MoonIcon } from '@chakra-ui/icons';
-import { motion } from 'framer-motion';
+  useColorMode
+} from "@chakra-ui/react"
+import { HamburgerIcon, SunIcon, MoonIcon } from "@chakra-ui/icons"
+import { motion } from "framer-motion"
 
-const MotionStack = motion(Stack);
+const MotionStack = motion(Stack)
 
 export function Navbar({ color }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const btnMenuRef = useRef();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { colorMode, toggleColorMode } = useColorMode()
+  const btnMenuRef = useRef()
 
-  const Links = ['Home', 'Projects', 'About', 'Contact'];
+  const Links = ["Home", "Projects", "About", "Contact"]
 
   return (
     <>
       <MotionStack
-        id="navbar"
-        className="navbar"
-        position="absolute"
-        justifyContent="center"
         alignItems="center"
-        px={{ base: 10, sm: 20, lg: 20, xl: 80 }}
-        width="100%"
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        className="navbar"
+        id="navbar"
+        initial={{ opacity: 0 }}
+        justifyContent="center"
+        position="absolute"
+        px={{ base: 10, sm: 20, lg: 20, xl: 80 }}
         transition={{ duration: 1 }}
+        width="100%"
       >
         <Stack
-          direction="row"
           alignItems="center"
+          color={color}
+          direction="row"
           justifyContent="space-between"
           w="100%"
-          color={color}
         >
           <Logo>rt.codes</Logo>
           <Stack alignItems="center">
             <HStack
-              as={'nav'}
-              spacing={10}
-              display={{ base: 'none', md: 'flex' }}
+              as={"nav"}
               className="nav-links"
+              display={{ base: "none", md: "flex" }}
+              spacing={10}
             >
               {Links.map((link, index) => (
                 <Link key={index} href={`#${link.toLowerCase()}`}>
@@ -61,38 +61,33 @@ export function Navbar({ color }) {
                 </Link>
               ))}
               <IconButton
+                icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
                 isRound="true"
                 padding={0}
                 onClick={toggleColorMode}
-                icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
               />
             </HStack>
           </Stack>
           <IconButton
-            size={'md'}
-            icon={!isOpen && <HamburgerIcon h={8} w={8} />}
-            aria-label={'Open Menu'}
-            display={{ md: 'none' }}
             ref={btnMenuRef}
-            onClick={onOpen}
+            aria-label={"Open Menu"}
             backgroundColor="transparent"
+            display={{ md: "none" }}
+            icon={!isOpen && <HamburgerIcon h={8} w={8} />}
+            size={"md"}
+            onClick={onOpen}
           />
         </Stack>
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-          finalFocusRef={btnMenuRef}
-        >
+        <Drawer finalFocusRef={btnMenuRef} isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton color="white" />
-            <DrawerHeader color="white" marginLeft={2} marginBottom={6}>
+            <DrawerHeader color="white" marginBottom={6} marginLeft={2}>
               Menu
             </DrawerHeader>
             <DrawerBody>
-              <Stack spacing={6} marginLeft={4}>
-                <VStack spacing={6} alignItems="flex-start" color="white">
+              <Stack marginLeft={4} spacing={6}>
+                <VStack alignItems="flex-start" color="white" spacing={6}>
                   {Links.map((link) => (
                     <Link key={link} href={`#${link.toLowerCase()}`}>
                       {link}
@@ -101,10 +96,10 @@ export function Navbar({ color }) {
                 </VStack>
                 <VStack alignItems="flex-start">
                   <IconButton
+                    icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
                     isRound="true"
                     padding={0}
                     onClick={toggleColorMode}
-                    icon={colorMode === 'dark' ? <SunIcon /> : <MoonIcon />}
                   />
                 </VStack>
               </Stack>
@@ -113,17 +108,17 @@ export function Navbar({ color }) {
         </Drawer>
       </MotionStack>
     </>
-  );
+  )
 }
 
 const Logo = ({ children }) => {
   return (
     <HStack>
       <Stack>
-        <Link href="/" className="logo">
+        <Link className="logo" href="/">
           {children}
         </Link>
       </Stack>
     </HStack>
-  );
-};
+  )
+}

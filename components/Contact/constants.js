@@ -1,17 +1,17 @@
 export const Socials = [
   {
-    name: 'ig',
-    url: 'https://instagram.toyamarodrigo.com',
-    ariaLabel: 'Instagram',
+    name: "ig",
+    url: "https://instagram.toyamarodrigo.com",
+    ariaLabel: "Instagram"
   },
   {
-    name: 'linkedin',
-    url: 'https://linkedin.toyamarodrigo.com',
-    ariaLabel: 'LinkedIn',
+    name: "linkedin",
+    url: "https://linkedin.toyamarodrigo.com",
+    ariaLabel: "LinkedIn"
   },
   {
-    name: 'github',
-    url: 'https://github.toyamarodrigo.com',
-    ariaLabel: 'Github',
-  },
-];
+    name: "github",
+    url: "https://github.toyamarodrigo.com",
+    ariaLabel: "Github"
+  }
+]
