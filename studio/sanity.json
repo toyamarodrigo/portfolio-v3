@@ -4,10 +4,6 @@
     "name": "studio",
     "basePath": "/studio"
   },
-  "api": {
-    "projectId": "",
-    "dataset": ""
-  },
   "plugins": [
     "@sanity/base",
     "@sanity/components",
