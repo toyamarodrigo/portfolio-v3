@@ -227,7 +227,7 @@ const DescriptionContainer = ({ post }) => {
                 size="xs"
                 onClick={handleToggle}
               >
-                More...
+                {!show ? "More..." : "Less"}
               </Button>
             </>
           ) : (
