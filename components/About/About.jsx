@@ -109,7 +109,7 @@ const Subtitle = () => {
       w={{ base: "80%", sm: "60%", md: "80&", lg: "80%" }}
     >
       <Text className="about__title__presentation" marginBottom={4}>
-        Hi, I'm Rodrigo, a Fullstack Developer based in Argentina.
+        Hi, I'm Rodrigo, a Front-end Developer based in Argentina.
       </Text>
       <Text className="about__title__presentation">
         Passionate about Software and Web development. I love to learn new things as well as solving
