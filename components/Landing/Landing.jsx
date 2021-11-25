@@ -89,7 +89,7 @@ export function Landing({ color }) {
           zIndex={1}
         >
           <Title color={color}>Rodrigo Toyama.</Title>
-          <Subtitle color={color}>Full-stack Developer</Subtitle>
+          <Subtitle color={color}>Front-end Developer</Subtitle>
         </MotionStack>
         <MotionList
           display="flex"
