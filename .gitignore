@@ -64,4 +64,8 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+### NextJS ###
+# Next build dir
+.next/
 
+# End of https://www.toptal.com/developers/gitignore/api/nextjs
