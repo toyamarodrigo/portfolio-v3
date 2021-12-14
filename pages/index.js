@@ -11,7 +11,7 @@ export default function Home({ posts }) {
   return (
     <Stack bg={bg} overflowX="hidden">
       <Head>
-        <title>Rodrigo Toyama - Full-stack Developer</title>
+        <title>Rodrigo Toyama - Front-end Developer</title>
         <meta charSet="utf-8" />
         <meta content="initial-scale=1.0, width=device-width" name="viewport" />
         <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
