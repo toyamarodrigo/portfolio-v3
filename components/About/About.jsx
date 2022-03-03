@@ -219,9 +219,9 @@ const SecondGoal = () => {
             <Link
               isExternal
               className="about__goal__second-text__link"
-              href="https://www.instagram.com/rt.codes/"
+              href="https://www.instagram.com/rodrito.dev/"
             >
-              @rt.codes
+              @rodrito.dev
             </Link>{" "}
             talking about the progress I was making and what concepts I was currently learning.
           </Text>
