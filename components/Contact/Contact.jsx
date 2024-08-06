@@ -1,12 +1,25 @@
-import React from "react"
-import { Stack, Box, VStack, Text, Button, Link, Icon, useColorModeValue } from "@chakra-ui/react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faInstagram, faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import { motion } from "framer-motion"
+import React from "react";
+import {
+  Stack,
+  Box,
+  VStack,
+  Text,
+  Button,
+  Link,
+  Icon,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faGithub,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
+import { motion } from "framer-motion";
 
-import { Socials } from "./constants"
+import { Socials } from "./constants";
 
-const MotionLink = motion(Link)
+const MotionLink = motion(Link);
 
 export function Contact({ color }) {
   return (
@@ -36,7 +49,7 @@ export function Contact({ color }) {
               base: "1.4rem",
               sm: "1.5rem",
               md: "1.6rem",
-              lg: "1.953rem"
+              lg: "1.953rem",
             }}
           >
             Let's work together
@@ -49,7 +62,9 @@ export function Contact({ color }) {
             and create game-changing experiences.
           </Text>
         </VStack>
-        <ButtonContact className="contact__title__button">Let's Talk</ButtonContact>
+        <ButtonContact className="contact__title__button">
+          Let's Talk
+        </ButtonContact>
       </Stack>
       <Stack
         className="contact__socials"
@@ -86,7 +101,7 @@ export function Contact({ color }) {
       </Stack>
       <EclipseTwo />
     </Stack>
-  )
+  );
 }
 
 const Title = ({ children }) => {
@@ -106,8 +121,8 @@ const Title = ({ children }) => {
         {children}
       </Text>
     </VStack>
-  )
-}
+  );
+};
 
 const ButtonContact = ({ children }) => {
   return (
@@ -124,11 +139,11 @@ const ButtonContact = ({ children }) => {
         </Button>
       </MotionLink>
     </Stack>
-  )
-}
+  );
+};
 
 const EclipseTwo = () => {
-  const eclipseBg = useColorModeValue("#ffb87a", "#ffe0c4")
+  const eclipseBg = useColorModeValue("#ffb87a", "#ffe0c4");
 
   return (
     <Box
@@ -141,7 +156,7 @@ const EclipseTwo = () => {
         base: "block",
         sm: "block",
         md: "block",
-        lg: "block"
+        lg: "block",
       }}
       height="2083px"
       position="absolute"
@@ -149,5 +164,5 @@ const EclipseTwo = () => {
       width="2083px"
       zIndex={1}
     />
-  )
-}
+  );
+};

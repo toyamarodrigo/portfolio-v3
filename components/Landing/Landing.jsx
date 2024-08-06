@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Box,
   Icon,
@@ -9,12 +9,12 @@ import {
   List,
   ListItem,
   useColorModeValue,
-} from '@chakra-ui/react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileAlt, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { Socials } from './constants';
-import { motion } from 'framer-motion';
+} from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileAlt, faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { Socials } from "./constants";
+import { motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 const MotionStack = motion(Stack);
@@ -50,9 +50,9 @@ export function Landing({ color }) {
   const handleScroll = () => setOffSetY(window.pageYOffset);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   return (
     <Stack
@@ -81,8 +81,8 @@ export function Landing({ color }) {
         <MotionStack
           className="landing__container-text__titles"
           marginBottom="26px"
-          w={'100%'}
-          marginX={'20px'}
+          w={"100%"}
+          marginX={"20px"}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
@@ -97,14 +97,14 @@ export function Landing({ color }) {
           justifyContent="space-around"
           alignItems="center"
           className="landing__container-text__socials"
-          w={{ base: '100', md: '100', lg: '100' }}
+          w={{ base: "100", md: "100", lg: "100" }}
           color="white"
           initial="hidden"
           animate="show"
           variants={variants}
         >
-          {Socials.map((social, index) => (
-            <MotionListItem key={index} variants={item}>
+          {Socials.map((social) => (
+            <MotionListItem key={social.name} variants={item}>
               <Link href={social.url}>
                 <a
                   target="_blank"
@@ -115,15 +115,15 @@ export function Landing({ color }) {
                   <Icon
                     as={FontAwesomeIcon}
                     icon={
-                      social.name === 'file'
+                      social.name === "file"
                         ? faFileAlt
-                        : social.name === 'linkedin'
+                        : social.name === "linkedin"
                         ? faLinkedinIn
-                        : social.name === 'github'
+                        : social.name === "github"
                         ? faGithub
-                        : social.name === 'mail'
+                        : social.name === "mail"
                         ? faEnvelopeSquare
-                        : ''
+                        : ""
                     }
                     className="svg-icon"
                   />
@@ -142,13 +142,13 @@ export function Landing({ color }) {
 const Logo = () => {
   return (
     <MotionStack
-      display={{ base: 'none', sm: 'none', md: 'none', lg: 'flex' }}
+      display={{ base: "none", sm: "none", md: "none", lg: "flex" }}
       justifyContent="center"
       alignItems="center"
       className="landing__container-logo"
       borderRadius="50%"
-      height={{ lg: '350px', xl: '420px' }}
-      width={{ lg: '350px', xl: '420px' }}
+      height={{ lg: "350px", xl: "420px" }}
+      width={{ lg: "350px", xl: "420px" }}
       initial={{ opacity: 0 }}
       animate={{ scale: [0, 1.4, 0.9, 1], opacity: 1 }}
       transition={{ duration: 0.8, delay: 1 }}
@@ -161,7 +161,7 @@ const Logo = () => {
 
 const Title = ({ children }) => {
   return (
-    <Text as={'h1'} fontSize={{ base: '4.2rem', sm: '4.2rem', lg: '4.768rem' }}>
+    <Text as={"h1"} fontSize={{ base: "4.2rem", sm: "4.2rem", lg: "4.768rem" }}>
       {children}
     </Text>
   );
@@ -169,22 +169,22 @@ const Title = ({ children }) => {
 
 const Subtitle = ({ children }) => {
   return (
-    <Text as={'h4'} fontSize={{ base: '1.4rem', sm: '1.6rem' }}>
+    <Text as={"h4"} fontSize={{ base: "1.4rem", sm: "1.6rem" }}>
       {children}
     </Text>
   );
 };
 
 const EclipseOne = ({ offSetY }) => {
-  const eclipseOne = useColorModeValue('#85a2eb', '#293552');
+  const eclipseOne = useColorModeValue("#85a2eb", "#293552");
   return (
     <MotionBox
       className="landing__eclipse"
       display={{
-        base: 'none',
-        sm: 'none',
-        md: 'none',
-        lg: 'block',
+        base: "none",
+        sm: "none",
+        md: "none",
+        lg: "block",
       }}
       bg={eclipseOne}
       position="absolute"
@@ -196,13 +196,13 @@ const EclipseOne = ({ offSetY }) => {
       zIndex={0}
       initial={{ opacity: 0 }}
       animate={{ scale: 1, x: [800, 0], y: offSetY * 0.2, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 50 }}
+      transition={{ type: "spring", stiffness: 50 }}
     />
   );
 };
 
 const EclipseTwo = ({ offSetY }) => {
-  const eclipseTwo = useColorModeValue('#6acadb', '#e9fbfe');
+  const eclipseTwo = useColorModeValue("#6acadb", "#e9fbfe");
   return (
     <MotionBox
       className="landing__eclipse2"
@@ -220,7 +220,7 @@ const EclipseTwo = ({ offSetY }) => {
         y: offSetY * 0.3,
         opacity: 1,
       }}
-      transition={{ type: 'spring', stiffness: 10 }}
+      transition={{ type: "spring", stiffness: 10 }}
     />
   );
 };

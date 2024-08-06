@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react"
-import NextLink from "next/link"
+import React, { useState, useEffect } from "react";
+import NextLink from "next/link";
 import {
   Stack,
   Image,
@@ -11,40 +11,40 @@ import {
   Link,
   Collapse,
   Spinner,
-  Select
-} from "@chakra-ui/react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Search2Icon } from "@chakra-ui/icons"
-import { faCode } from "@fortawesome/free-solid-svg-icons"
-import ImageUrlBuilder from "@sanity/image-url"
-import { motion } from "framer-motion"
+  Select,
+} from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Search2Icon } from "@chakra-ui/icons";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import ImageUrlBuilder from "@sanity/image-url";
+import { motion } from "framer-motion";
 
-const MotionStack = motion(Stack)
+const MotionStack = motion(Stack);
 
 export default function ProjectsList({ posts, isShowing }) {
-  const [mappedPosts, setMappedPosts] = useState([])
-  const [filter, setFilter] = useState("recent")
+  const [mappedPosts, setMappedPosts] = useState([]);
+  const [filter, setFilter] = useState("recent");
 
   useEffect(() => {
     if (posts.length) {
       const imgBuilder = ImageUrlBuilder({
         projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-        dataset: process.env.NEXT_PUBLIC_PROJECT_DATASET
-      })
+        dataset: process.env.NEXT_PUBLIC_PROJECT_DATASET,
+      });
 
       setMappedPosts(
         posts.map((post) => {
           return {
             ...post,
             _createdAt: new Date(post._createdAt),
-            mainImage: imgBuilder.image(post.mainImage)
-          }
+            mainImage: imgBuilder.image(post.mainImage),
+          };
         })
-      )
+      );
     }
-  }, [])
+  }, [posts]);
 
-  const handleChangeFilter = (e) => setFilter(e.target.value)
+  const handleChangeFilter = (e) => setFilter(e.target.value);
 
   const postFilteredRecent = () => {
     if (!isShowing) {
@@ -52,20 +52,20 @@ export default function ProjectsList({ posts, isShowing }) {
         .sort((a, b) => b._createdAt - a._createdAt)
         .slice(0, 3)
         .map((post, index) => (
-          <ProjectItem key={index} index={index} post={post}>
+          <ProjectItem key={post.title} index={index} post={post}>
             <ProjectBody post={post} />
           </ProjectItem>
-        ))
-    } else {
-      return mappedPosts
-        .sort((a, b) => b._createdAt - a._createdAt)
-        .map((post, index) => (
-          <ProjectItem key={index} index={index} post={post}>
-            <ProjectBody post={post} />
-          </ProjectItem>
-        ))
+        ));
     }
-  }
+
+    return mappedPosts
+      .sort((a, b) => b._createdAt - a._createdAt)
+      .map((post, index) => (
+        <ProjectItem key={post.title} index={index} post={post}>
+          <ProjectBody post={post} />
+        </ProjectItem>
+      ));
+  };
 
   const postFilteredOldest = () => {
     if (!isShowing) {
@@ -73,32 +73,37 @@ export default function ProjectsList({ posts, isShowing }) {
         .sort((a, b) => a._createdAt - b._createdAt)
         .slice(0, 3)
         .map((post, index) => (
-          <ProjectItem key={index} index={index} post={post}>
+          <ProjectItem key={post.title} index={index} post={post}>
             <ProjectBody post={post} />
           </ProjectItem>
-        ))
-    } else {
-      return mappedPosts
-        .sort((a, b) => a._createdAt - b._createdAt)
-        .map((post, index) => (
-          <ProjectItem key={index} index={index} post={post}>
-            <ProjectBody post={post} />
-          </ProjectItem>
-        ))
+        ));
     }
-  }
 
-  if (!mappedPosts.length) <Spinner />
+    return mappedPosts
+      .sort((a, b) => a._createdAt - b._createdAt)
+      .map((post, index) => (
+        <ProjectItem key={post.title} index={index} post={post}>
+          <ProjectBody post={post} />
+        </ProjectItem>
+      ));
+  };
+
+  if (!mappedPosts.length) <Spinner />;
 
   return (
     <>
-      <Select alignSelf={{ lg: "flex-end" }} variant="filled" w={120} onChange={handleChangeFilter}>
+      <Select
+        alignSelf={{ lg: "flex-end" }}
+        variant="filled"
+        w={120}
+        onChange={handleChangeFilter}
+      >
         <option value="recent">Recent</option>
         <option value="oldest">Oldest</option>
       </Select>
       {filter === "recent" ? postFilteredRecent() : postFilteredOldest()}
     </>
-  )
+  );
 }
 
 const ProjectBody = ({ post }) => {
@@ -118,20 +123,22 @@ const ProjectBody = ({ post }) => {
         <ButtonsContainers post={post} />
       </Stack>
     </Stack>
-  )
-}
+  );
+};
 
 const ProjectItem = ({ children, post, index }) => {
   return (
     <MotionStack
       borderRadius={20}
       boxShadow="xl"
-      className={index % 2 === 0 ? `project-list-card-odd` : `project-list-card-even`}
+      className={
+        index % 2 === 0 ? "project-list-card-odd" : "project-list-card-even" 
+      }
       data-aos="zoom-in"
       flexDirection={{
         base: "column-reverse",
         sm: "column-reverse",
-        md: "column-reverse"
+        md: "column-reverse",
       }}
       h={{ sm: "100%", md: "100%", lg: "100%" }}
       overflow="hidden"
@@ -156,8 +163,8 @@ const ProjectItem = ({ children, post, index }) => {
       />
       {children}
     </MotionStack>
-  )
-}
+  );
+};
 
 const ButtonsContainers = ({ post }) => {
   return (
@@ -182,15 +189,15 @@ const ButtonsContainers = ({ post }) => {
         </NextLink>
       ) : null}
     </Stack>
-  )
-}
+  );
+};
 
 const BadgeContainers = ({ post }) => {
   return (
     <Stack direction="row" noOfLines={2}>
-      {post.techUsed.map((tech, index) => (
+      {post.techUsed.map((tech) => (
         <Badge
-          key={index}
+          key={tech}
           colorScheme="pink"
           justifySelf="center"
           paddingX={{ base: 1, sm: 2, md: 4, lg: 4 }}
@@ -200,12 +207,12 @@ const BadgeContainers = ({ post }) => {
         </Badge>
       ))}
     </Stack>
-  )
-}
+  );
+};
 
 const DescriptionContainer = ({ post }) => {
-  const [show, setShow] = useState(false)
-  const handleToggle = () => setShow(!show)
+  const [show, setShow] = useState(false);
+  const handleToggle = () => setShow(!show);
 
   return (
     <VStack alignItems="flex-start">
@@ -236,5 +243,5 @@ const DescriptionContainer = ({ post }) => {
         )
       )}
     </VStack>
-  )
-}
+  );
+};

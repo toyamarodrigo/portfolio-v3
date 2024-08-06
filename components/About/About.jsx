@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react";
 import {
   Stack,
   Text,
@@ -9,23 +9,23 @@ import {
   GridItem,
   Button,
   Link,
-  useColorModeValue
-} from "@chakra-ui/react"
-import NextLink from "next/link"
-import { motion } from "framer-motion"
+  useColorModeValue,
+} from "@chakra-ui/react";
+import NextLink from "next/link";
+import { motion } from "framer-motion";
 
-const MotionStack = motion(Stack)
-const MotionBox = motion(Box)
+const MotionStack = motion(Stack);
+const MotionBox = motion(Box);
 
 export function About({ color }) {
-  const [offSetY, setOffSetY] = useState(0)
-  const handleScroll = () => setOffSetY(window.pageYOffset)
+  const [offSetY, setOffSetY] = useState(0);
+  const handleScroll = () => setOffSetY(window.pageYOffset);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <Stack
@@ -65,7 +65,7 @@ export function About({ color }) {
 
       <EclipseTwo />
     </Stack>
-  )
+  );
 }
 
 const ButtonViewProject = ({ children }) => {
@@ -83,8 +83,8 @@ const ButtonViewProject = ({ children }) => {
         </Button>
       </NextLink>
     </MotionStack>
-  )
-}
+  );
+};
 
 const Title = ({ children }) => {
   return (
@@ -98,8 +98,8 @@ const Title = ({ children }) => {
         {children}
       </Text>
     </VStack>
-  )
-}
+  );
+};
 
 const Subtitle = () => {
   return (
@@ -112,12 +112,12 @@ const Subtitle = () => {
         Hi, I'm Rodrigo, a Front-end Developer based in Argentina.
       </Text>
       <Text className="about__title__presentation">
-        Passionate about Software and Web development. I love to learn new things as well as solving
-        real-world problems.
+        Passionate about Software and Web development. I love to learn new
+        things as well as solving real-world problems.
       </Text>
     </VStack>
-  )
-}
+  );
+};
 
 const GoalTitle = () => {
   return (
@@ -138,7 +138,7 @@ const GoalTitle = () => {
             base: "8rem",
             sm: "10rem",
             md: "10rem",
-            lg: "14.552rem"
+            lg: "14.552rem",
           }}
           opacity={0.3}
         >
@@ -146,8 +146,8 @@ const GoalTitle = () => {
         </Text>
       </Stack>
     </GridItem>
-  )
-}
+  );
+};
 
 const FirstGoal = () => {
   return (
@@ -162,7 +162,12 @@ const FirstGoal = () => {
         data-aos-duration="2000"
         justifyContent="center"
       >
-        <Image alt="goal image" borderRadius="20px" h={"auto"} src={"/goals-image1.jpg"} />
+        <Image
+          alt="goal image"
+          borderRadius="20px"
+          h={"auto"}
+          src={"/goals-image1.jpg"}
+        />
       </Stack>
 
       <Stack
@@ -174,17 +179,18 @@ const FirstGoal = () => {
         textAlign={{ sm: "left", md: "left", lg: "right" }}
       >
         <Text>
-          My goal is to provide high-quality work to clients no matter if the project is small or of
-          high complexity.
+          My goal is to provide high-quality work to clients no matter if the
+          project is small or of high complexity.
         </Text>
         <Text>
-          I entered the world of Software development because I realized that I can make an impact
-          on people by just using my imagination and passion when building applications.
+          I entered the world of Software development because I realized that I
+          can make an impact on people by just using my imagination and passion
+          when building applications.
         </Text>
       </Stack>
     </GridItem>
-  )
-}
+  );
+};
 
 const SecondGoal = () => {
   return (
@@ -198,7 +204,7 @@ const SecondGoal = () => {
           base: "column",
           sm: "column",
           md: "column",
-          lg: "row"
+          lg: "row",
         }}
         justifyContent="center"
         spacing={10}
@@ -211,11 +217,15 @@ const SecondGoal = () => {
           h={"auto"}
           src={"/goals-image2.jpg"}
         />
-        <Stack className="about__goal__second-text" data-aos="fade-left" data-aos-duration="2000">
+        <Stack
+          className="about__goal__second-text"
+          data-aos="fade-left"
+          data-aos-duration="2000"
+        >
           <Text>
-            By 2018, I thought it would be a good idea to start documenting/blogging my journey of
-            becoming a developer to inspire others as well as keep myself accountable. So I started
-            my Instagram{" "}
+            By 2018, I thought it would be a good idea to start
+            documenting/blogging my journey of becoming a developer to inspire
+            others as well as keep myself accountable. So I started my Instagram{" "}
             <Link
               isExternal
               className="about__goal__second-text__link"
@@ -223,20 +233,22 @@ const SecondGoal = () => {
             >
               @rodrito.dev
             </Link>{" "}
-            talking about the progress I was making and what concepts I was currently learning.
+            talking about the progress I was making and what concepts I was
+            currently learning.
           </Text>
           <Text>
-            I also did a bunch of Personal projects with the knowledge I gathered from courses and
-            the Internet. Check them out on the button below.
+            I also did a bunch of Personal projects with the knowledge I
+            gathered from courses and the Internet. Check them out on the button
+            below.
           </Text>
         </Stack>
       </Stack>
     </GridItem>
-  )
-}
+  );
+};
 
 const EclipseOne = ({ offSetY }) => {
-  const eclipseBg = useColorModeValue("#85a2eb", "#1f2b4d")
+  const eclipseBg = useColorModeValue("#85a2eb", "#1f2b4d");
 
   return (
     <MotionBox
@@ -249,7 +261,7 @@ const EclipseOne = ({ offSetY }) => {
         base: "none",
         sm: "block",
         md: "block",
-        lg: "block"
+        lg: "block",
       }}
       height="2450px"
       position="absolute"
@@ -259,11 +271,11 @@ const EclipseOne = ({ offSetY }) => {
       width="2450px"
       zIndex={-1}
     />
-  )
-}
+  );
+};
 
 const EclipseTwo = () => {
-  const eclipseBg = useColorModeValue("#ffb87a", "#ffe0c4")
+  const eclipseBg = useColorModeValue("#ffb87a", "#ffe0c4");
 
   return (
     <MotionBox
@@ -276,12 +288,12 @@ const EclipseTwo = () => {
         base: "block",
         sm: "block",
         md: "block",
-        lg: "block"
+        lg: "block",
       }}
       height="194px"
       position="absolute"
       width="194px"
       zIndex={0}
     />
-  )
-}
+  );
+};

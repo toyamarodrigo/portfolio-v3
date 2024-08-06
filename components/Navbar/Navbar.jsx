@@ -1,5 +1,5 @@
-import React, { useRef } from "react"
-import Link from "next/link"
+import React, { useRef } from "react";
+import Link from "next/link";
 import {
   useDisclosure,
   HStack,
@@ -12,19 +12,19 @@ import {
   DrawerCloseButton,
   DrawerHeader,
   DrawerBody,
-  useColorMode
-} from "@chakra-ui/react"
-import { HamburgerIcon, SunIcon, MoonIcon } from "@chakra-ui/icons"
-import { motion } from "framer-motion"
+  useColorMode,
+} from "@chakra-ui/react";
+import { HamburgerIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { motion } from "framer-motion";
 
-const MotionStack = motion(Stack)
+const MotionStack = motion(Stack);
 
 export function Navbar({ color }) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const { colorMode, toggleColorMode } = useColorMode()
-  const btnMenuRef = useRef()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const btnMenuRef = useRef();
 
-  const Links = ["Home", "Projects", "About", "Contact"]
+  const Links = ["Home", "Projects", "About", "Contact"];
 
   return (
     <>
@@ -55,8 +55,8 @@ export function Navbar({ color }) {
               display={{ base: "none", md: "flex" }}
               spacing={10}
             >
-              {Links.map((link, index) => (
-                <Link key={index} href={`#${link.toLowerCase()}`}>
+              {Links.map((link) => (
+                <Link key={link} href={`#${link.toLowerCase()}`}>
                   {link}
                 </Link>
               ))}
@@ -78,7 +78,12 @@ export function Navbar({ color }) {
             onClick={onOpen}
           />
         </Stack>
-        <Drawer finalFocusRef={btnMenuRef} isOpen={isOpen} placement="right" onClose={onClose}>
+        <Drawer
+          finalFocusRef={btnMenuRef}
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+        >
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton color="white" />
@@ -108,7 +113,7 @@ export function Navbar({ color }) {
         </Drawer>
       </MotionStack>
     </>
-  )
+  );
 }
 
 const Logo = ({ children }) => {
@@ -120,5 +125,5 @@ const Logo = ({ children }) => {
         </Link>
       </Stack>
     </HStack>
-  )
-}
+  );
+};

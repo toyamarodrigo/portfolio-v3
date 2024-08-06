@@ -1,15 +1,15 @@
-import React, { useState } from "react"
-import { Stack, Text, Button } from "@chakra-ui/react"
-import { motion } from "framer-motion"
+import React, { useState } from "react";
+import { Stack, Text, Button } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
-import ProjectsList from "./ProjectsList/ProjectsList"
+import ProjectsList from "./ProjectsList/ProjectsList";
 
-const MotionButton = motion(Button)
+const MotionButton = motion(Button);
 
 export function Projects({ posts, color }) {
-  const [isShowing, setIsShowing] = useState(false)
+  const [isShowing, setIsShowing] = useState(false);
 
-  const handleShowProject = () => setIsShowing(!isShowing)
+  const handleShowProject = () => setIsShowing(!isShowing);
 
   return (
     <Stack
@@ -50,7 +50,7 @@ export function Projects({ posts, color }) {
         </MotionButton>
       </Stack>
     </Stack>
-  )
+  );
 }
 
 const Title = ({ children }) => {
@@ -63,5 +63,5 @@ const Title = ({ children }) => {
     >
       {children}
     </Text>
-  )
-}
+  );
+};
